@@ -1,17 +1,13 @@
 import { Link, routes } from '@redwoodjs/router';
 
+import Navigation from 'src/components/Navigation'
+
 const StandardLayout = ({ children }) => {
   return (
     <>
       <header>
         <h1>Surface Data Collector</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to={routes.home()}>Home</Link>
-            </li>
-          </ul>
-        </nav>
+        <Navigation />
       </header>
       <main>
         {children}
