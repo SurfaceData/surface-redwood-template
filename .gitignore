@@ -21,3 +21,6 @@ api/types/graphql.d.ts
 
 # Vim files
 *.swp
+
+# Local file for data storage
+data/*
