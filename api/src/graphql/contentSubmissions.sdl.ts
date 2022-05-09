@@ -34,4 +34,4 @@ export const schema = gql`
     ): ContentSubmission! @requireAuth
     deleteContentSubmission(id: Int!): ContentSubmission! @requireAuth
   }
-`
+`;

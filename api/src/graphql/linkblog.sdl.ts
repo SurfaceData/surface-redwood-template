@@ -15,4 +15,4 @@ export const schema = gql`
   type Mutation {
     linkBlog(input: LinkBlogInput!): [ContentSubmissionLog]! @requireAuth
   }
-`
+`;
