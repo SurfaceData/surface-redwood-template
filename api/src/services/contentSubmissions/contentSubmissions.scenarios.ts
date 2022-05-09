@@ -8,4 +8,4 @@ export const standard = defineScenario({
       data: { userId: 'String', entryId: 'String', sentenceCount: 4922475 },
     },
   },
-})
+});
