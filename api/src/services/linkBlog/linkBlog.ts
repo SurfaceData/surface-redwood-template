@@ -2,6 +2,7 @@ import { validate, validateWith } from '@redwoodjs/api';
 import fs from 'fs';
 
 import { db } from 'src/lib/db';
+import { saver } from 'src/lib/saver';
 
 export const linkBlog = async ({ input }) => {
   let blogUrl;
@@ -24,22 +25,15 @@ export const linkBlog = async ({ input }) => {
   if (!response.ok) {
     throw new Error('Could not fetch blog contents');
   }
-  const userDataPath = `${process.env.BLOBSTORE_PATH}/${input.id}`;
-  fs.mkdirSync(userDataPath, { recursive: true });
 
   const results = await response.json();
-  return await results.posts.map(async ({ id, plaintext }) => {
-    const sentences = plaintext.split('\n');
-    const datablob = {
-      entryId: id,
-      sentences: sentences,
-    };
-    fs.writeFileSync(`${userDataPath}/${id}.json`, JSON.stringify(datablob));
-
+  return await results.posts.map(async (post: GhostPost) => {
+    const sentences = post.plaintext.split('\n');
+    saver.savePost(input.id, post);
     return await db.contentSubmission.create({
       data: {
         userId: input.id,
-        entryId: id,
+        entryId: post.id,
         sentenceCount: sentences.length,
       },
     });
