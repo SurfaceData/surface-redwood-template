@@ -11,6 +11,8 @@ import {
 import { useMutation } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 
+import { QUERY as ContentSubmissionsQuery } from 'src/components/ContentSubmissionsCell'
+
 const LINK = gql`
   mutation LinkBlog($input: LinkBlogInput!) {
     linkBlog(input: $input) {
@@ -23,13 +25,18 @@ const LINK = gql`
 const LinkBlogForm = () => {
   const formMethods = useForm()
   const { currentUser } = useAuth()
-  const [submissionLogs, setSubmissionLogs] = useState([])
   const [linkBlog, { loading, error }] = useMutation(LINK, {
     onCompleted: (result) => {
-      setSubmissionLogs(result.linkBlog)
       toast.success('Thank you for linking your blog')
       //formMethods.reset()
     },
+    refetchQueries: [
+      {
+        query: ContentSubmissionsQuery,
+        variables: { userId: currentUser.sub },
+      },
+    ],
+
   })
 
   const onSubmit = (input) => {
@@ -78,11 +85,6 @@ const LinkBlogForm = () => {
           Submit
         </Submit>
       </Form>
-
-      {submissionLogs.map((log) => (
-        <div key={log.id}>{log.sentenceCount}</div>
-      ))
-      }
     </div>
   )
 }

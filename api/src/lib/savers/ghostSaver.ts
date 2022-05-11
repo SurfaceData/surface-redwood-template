@@ -5,4 +5,6 @@ export type GhostPost = {
 
 export interface GhostSaver {
   savePost(userId: string, post: GhostPost): void;
+
+  clearPosts(userId: string): void;
 }

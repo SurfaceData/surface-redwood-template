@@ -7,8 +7,12 @@ export const schema = gql`
     createdAt: DateTime!
   }
 
+  type ContentSubmissionDeletion {
+    count: Int!
+  }
+
   type Query {
-    contentSubmissions: [ContentSubmission!]! @requireAuth
+    contentSubmissions(userId: String!): [ContentSubmission!]! @requireAuth
     contentSubmission(id: Int!): ContentSubmission @requireAuth
   }
 
@@ -33,5 +37,6 @@ export const schema = gql`
       input: UpdateContentSubmissionInput!
     ): ContentSubmission! @requireAuth
     deleteContentSubmission(id: Int!): ContentSubmission! @requireAuth
+    deleteUserContentSubmissions(userId: String!): ContentSubmissionDeletion! @requireAuth
   }
 `;

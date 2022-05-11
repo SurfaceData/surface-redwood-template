@@ -18,4 +18,9 @@ export class LocalFileGhostSaver implements GhostSaver {
     };
     fs.writeFileSync(`${userDataPath}/${post.id}.json`, JSON.stringify(datablob));
   }
+
+  clearPosts(userId: string) {
+    const userDataPath = `${this.basePath}/${userId}`;
+    fs.rmSync(userDataPath, { recursive: true, force: true });
+  }
 }
