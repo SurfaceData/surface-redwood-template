@@ -23,6 +23,7 @@
   },
   "packageManager": "yarn@3.2.0",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.87.0"
+    "@aws-sdk/client-s3": "^3.87.0",
+    "rsuite": "^5.11.0"
   }
 }

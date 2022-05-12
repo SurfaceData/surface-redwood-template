@@ -1,21 +1,42 @@
-import { Link, routes } from '@redwoodjs/router'
+import { Link, navigate, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
+import { Navbar, Nav, Dropdown } from 'rsuite'
 
-import SignoutBtn from 'src/components/SignoutBtn/SignoutBtn'
+const RedwoodLink = React.forwardRef((props) => {
+  return <Link {...props} />
+})
+
+const UserItem = () => {
+  const { isAuthenticated, logOut } = useAuth()
+  if (isAuthenticated) {
+    return (
+      <Nav.Item
+        onSelect={async () => {
+          await logOut()
+          navigate(routes.home())
+        }}
+      >
+        Sign Out
+      </Nav.Item>
+    )
+  }
+  return (
+    <Nav.Item as={RedwoodLink} to={routes.signin()}>
+      Sign In
+    </Nav.Item>
+  )
+}
 
 const Navigation = () => {
-  const { isAuthenticated } = useAuth()
   return (
-    <nav>
-      {isAuthenticated ? (
-        <SignoutBtn />
-      ) : (
-        <>
-          <Link to={routes.signup()}>Sign Up</Link>
-          <Link to={routes.signin()}>Sign In</Link>
-        </>
-      )}
-    </nav>
+    <Navbar className="p-4">
+      <Navbar.Brand as={RedwoodLink} to={routes.home()}>
+        Surface Data Collector
+      </Navbar.Brand>
+      <Nav pullRight>
+        <UserItem />
+      </Nav>
+    </Navbar>
   )
 }
 
