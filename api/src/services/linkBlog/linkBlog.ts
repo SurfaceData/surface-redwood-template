@@ -1,5 +1,6 @@
 import { validate, validateWith } from '@redwoodjs/api';
 import fs from 'fs';
+import generateApiKey from 'generate-api-key';
 
 import { db } from 'src/lib/db';
 import { saver } from 'src/lib/saver';
@@ -20,6 +21,26 @@ export const linkBlog = async ({ input }) => {
       throw new Error('Invalid URL');
     }
   });
+
+  const synckey = generateApiKey({ method: 'bytes' });
+  const linkedBlog = await db.linkedBlog.upsert({
+    where: {
+      userId: input.id,
+    },
+    update: {
+      synckey: synckey,
+      language: input.language,
+    },
+    create: {
+      userId: input.id,
+      synckey: synckey,
+      language: input.language,
+    }
+  })
+
+  // First, we have to create the users link information.
+  // We do this by creating a new API key for them and adding it to the
+  // LinkBlog model.
   const postsUrl = `${blogUrl.href}/ghost/api/v2/content/posts?key=${input.apikey}&formats=plaintext`;
   const response = await fetch(postsUrl);
   if (!response.ok) {
@@ -27,15 +48,17 @@ export const linkBlog = async ({ input }) => {
   }
 
   const results = await response.json();
-  return await results.posts.map(async (post: GhostPost) => {
-    const sentences = post.plaintext.split('\n');
-    saver.savePost(input.id, post);
+  await results.posts.map(async (post: GhostPost) => {
+    saver.savePost(synckey, post);
     return await db.contentSubmission.create({
       data: {
         userId: input.id,
         entryId: post.id,
-        sentenceCount: sentences.length,
+        title: post.title,
+        snippet: post.excerpt,
       },
     });
   });
+
+  return linkedBlog;
 }

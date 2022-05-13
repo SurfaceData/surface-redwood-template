@@ -3,16 +3,17 @@ export const schema = gql`
     id: String!
     url: String!
     apikey: String!
+    language: String!
   }
 
   type ContentSubmissionLog {
     id: Int!
     userId: String!
-    entryId: String!
-    sentenceCount: Int!
+    synckey: String!
+    language: String!
   }
 
   type Mutation {
-    linkBlog(input: LinkBlogInput!): [ContentSubmissionLog]! @requireAuth
+    linkBlog(input: LinkBlogInput!): ContentSubmissionLog @requireAuth
   }
 `;

@@ -17,7 +17,7 @@ const LINK = gql`
   mutation LinkBlog($input: LinkBlogInput!) {
     linkBlog(input: $input) {
       id
-      sentenceCount
+      synckey
     }
   }
 `
@@ -61,6 +61,16 @@ const LinkBlogForm = () => {
         formMethods={formMethods}
       >
         <FormError error={error} />
+
+        <Label name="language" className="block text-sm text-gray-600 uppercase">
+          Language Code
+        </Label>
+        <TextField
+          name="language"
+          className="block w-full p-1 border roudned text-xs"
+          validation={{ required: true }}
+        />
+
         <Label name="url" className="block text-sm text-gray-600 uppercase">
           Blog URL
         </Label>
