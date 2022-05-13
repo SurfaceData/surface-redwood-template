@@ -12,6 +12,14 @@ model ContentSubmission {
   id             Int @id @default(autoincrement())
   userId         String
   entryId        String
-  sentenceCount  Int
+  title          String
+  snippet        String
   createdAt      DateTime @default(now())
+}
+
+model LinkedBlog {
+  id             Int @id @default(autoincrement())
+  userId         String
+  synckey        String
+  language       String
 }
