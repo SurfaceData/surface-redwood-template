@@ -1,12 +1,15 @@
 import { Private, Router, Route, Set } from '@redwoodjs/router'
 
+import AuthLayout from 'src/layouts/AuthLayout'
 import StandardLayout from 'src/layouts/StandardLayout'
 
 const Routes = () => {
   return (
     <Router>
-      <Route path="/signin" page={SigninPage} name="signin" />
-      <Route path="/signup" page={SignupPage} name="signup" />
+      <Set wrap={AuthLayout}>
+        <Route path="/signin" page={SigninPage} name="signin" />
+        <Route path="/signup" page={SignupPage} name="signup" />
+      </Set>
       <Private unauthenticated="home">
         <Set wrap={StandardLayout}>
           <Route path="/profile/info" page={ProfileInfoPage} name="profileInfo" />

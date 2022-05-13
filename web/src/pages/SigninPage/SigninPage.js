@@ -1,6 +1,7 @@
-import { Form, TextField, PasswordField, Submit } from '@redwoodjs/forms'
+import { Form, Label, TextField, PasswordField, Submit } from '@redwoodjs/forms'
 import { useAuth } from '@redwoodjs/auth'
-import { navigate, routes } from '@redwoodjs/router'
+import { Link, navigate, routes } from '@redwoodjs/router'
+import { Panel } from 'rsuite'
 
 const SigninPage = () => {
   const { logIn } = useAuth()
@@ -24,15 +25,37 @@ const SigninPage = () => {
   }
 
   return (
-    <>
-      <h1>Sign In</h1>
+    <Panel header={<h3>Login</h3>} bordered>
       <Form onSubmit={onSubmit}>
         {error && <p>{error}</p>}
-        <TextField name="email" placeholder="email" />
+        <Label
+          name="email"
+          className="block text-xs font-semibold text-gray-500"
+        >
+          Email
+        </Label>
+        <TexttField
+          name="email"
+          className="block w-full p-1 border rounded text-sm"
+          placeholder="email"
+        />
+
+        <Label
+          name="password"
+          className="block text-xs font-semibold text-gray-500"
+        >
+          Password
+        </Label>
         <PasswordField name="password" placeholder="password" />
-        <Submit>Sign In</Submit>
+
+        <Submit className="block mt-4 bg-blue-500 text-white text-xs font-semibold rounded px-2 py-2">
+          Sign In
+        </Submit>
       </Form>
-    </>
+      <div>
+        New User? <Link to={routes.signup()}>Sign Up</Link>
+      </div>
+    </Panel>
   )
 }
 
