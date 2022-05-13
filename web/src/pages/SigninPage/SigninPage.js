@@ -34,7 +34,7 @@ const SigninPage = () => {
         >
           Email
         </Label>
-        <TexttField
+        <TextField
           name="email"
           className="block w-full p-1 border rounded text-sm"
           placeholder="email"
