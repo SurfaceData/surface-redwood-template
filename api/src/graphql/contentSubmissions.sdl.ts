@@ -3,7 +3,8 @@ export const schema = gql`
     id: Int!
     userId: String!
     entryId: String!
-    sentenceCount: Int!
+    title: String!
+    snippet: String!
     createdAt: DateTime!
   }
 

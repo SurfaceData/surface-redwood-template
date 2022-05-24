@@ -40,11 +40,11 @@ const SocialIcon = styled.a`
 
 const StandardLayout = ({ children }) => {
   return (
-    <Container className="flex flex-col h-screen justify-between">
+    <Container className="flex-col h-screen justify-between">
       <Header>
         <Navigation />
       </Header>
-      <Content className="mb-auto h-10 p-4">
+      <Content className="flex-1 mb-auto p-4">
         {children}
       </Content>
       <Footer className="p-4">
