@@ -7,7 +7,6 @@ export const QUERY = gql`
     contentSubmissions(userId: $userId) {
       id
       entryId
-      createdAt
     }
   }
 `
