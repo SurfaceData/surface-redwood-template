@@ -5,9 +5,9 @@ export const linkedBlogs: QueryResolvers['linkedBlogs'] = () => {
   return db.linkedBlog.findMany()
 }
 
-export const linkedBlog: QueryResolvers['linkedBlog'] = ({ id }) => {
+export const linkedBlog: QueryResolvers['linkedBlog'] = ({ userId }) => {
   return db.linkedBlog.findUnique({
-    where: { id },
+    where: { userId },
   })
 }
 
@@ -16,6 +16,16 @@ export const createLinkedBlog: MutationResolvers['createLinkedBlog'] = ({
 }) => {
   return db.linkedBlog.create({
     data: input,
+  })
+}
+
+export const createSyncedBlog: MutationResolvers['createSyncedBlog'] = ({
+  userId,
+  input,
+}) => {
+  return db.linkedBlog.update({
+    data: input,
+    where: { userId },
   })
 }
 

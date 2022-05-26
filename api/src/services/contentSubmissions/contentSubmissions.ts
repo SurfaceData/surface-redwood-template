@@ -1,9 +1,9 @@
 import { db } from 'src/lib/db';
 import { saver } from 'src/lib/saver';
 
-export const contentSubmissions = ({ userId }) => {
+export const contentSubmissions = ({ synckey }) => {
   return db.contentSubmission.findMany({
-    where: { userId }
+    where: { synckey }
   });
 }
 
@@ -32,9 +32,9 @@ export const deleteContentSubmission = ({ id }) => {
   });
 }
 
-export const deleteUserContentSubmissions = ({ userId }) => {
-  saver.clearPosts(userId);
+export const deleteUserContentSubmissions = ({ synckey }) => {
+  saver.clearPosts(synckey);
   return db.contentSubmission.deleteMany({
-    where: { userId },
+    where: { synckey },
   });
 }

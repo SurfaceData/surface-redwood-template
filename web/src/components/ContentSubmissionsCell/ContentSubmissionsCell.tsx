@@ -4,10 +4,11 @@ import { useMutation } from '@redwoodjs/web'
 import { Panel, Stack } from 'rsuite'
 
 import LinkBlogForm from 'src/components/LinkBlogForm'
+import { QUERY as FindLinkedBlogQuery } from 'src/components/LinkedBlogCell'
 
 export const QUERY = gql`
-  query ContentSubmissionsQuery($userId: String!) {
-    contentSubmissions(userId: $userId) {
+  query ContentSubmissionsQuery($synckey: String!) {
+    contentSubmissions(synckey: $synckey) {
       id
       entryId
       createdAt
@@ -18,8 +19,8 @@ export const QUERY = gql`
 `
 
 const DELETE = gql`
-  mutation DeleteContentSubmissionsMutation($userId: String!) {
-    deleteUserContentSubmissions(userId: $userId) {
+  mutation DeleteContentSubmissionsMutation($synckey: String!) {
+    deleteUserContentSubmissions(synckey: $synckey) {
       count
     }
   }
@@ -27,7 +28,7 @@ const DELETE = gql`
 
 export const Loading = () => <div>Loading...</div>
 
-export const Empty = () => <LinkBlogForm />
+export const Empty = () => <div>Empty...</div>
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div style={{ color: 'red' }}>Error: {error.message}</div>
@@ -35,20 +36,19 @@ export const Failure = ({ error }: CellFailureProps) => (
 
 export const Success = ({
   contentSubmissions,
-  userId,
+  synckey,
 }: CellSuccessProps<ContentSubmissionsQuery>) => {
   const [deleteSubmissions] = useMutation(DELETE, {
     refetchQueries: [
       {
-        query: QUERY,
-        variables: { userId: userId },
+        query: FindLinkedBlogQuery,
       },
     ],
   })
 
   const handleDelete = () => {
     deleteSubmissions({
-      variables: { userId: userId },
+      variables: { synckey },
     })
   }
 

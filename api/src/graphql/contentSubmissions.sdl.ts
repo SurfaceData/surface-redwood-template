@@ -1,7 +1,7 @@
 export const schema = gql`
   type ContentSubmission {
     id: Int!
-    userId: String!
+    synckey: String!
     entryId: String!
     title: String!
     snippet: String!
@@ -13,18 +13,18 @@ export const schema = gql`
   }
 
   type Query {
-    contentSubmissions(userId: String!): [ContentSubmission!]! @requireAuth
+    contentSubmissions(synckey: String!): [ContentSubmission!]! @requireAuth
     contentSubmission(id: Int!): ContentSubmission @requireAuth
   }
 
   input CreateContentSubmissionInput {
-    userId: String!
+    synckey: String!
     entryId: String!
     sentenceCount: Int!
   }
 
   input UpdateContentSubmissionInput {
-    userId: String
+    synckey: String
     entryId: String
     sentenceCount: Int
   }
@@ -38,6 +38,6 @@ export const schema = gql`
       input: UpdateContentSubmissionInput!
     ): ContentSubmission! @requireAuth
     deleteContentSubmission(id: Int!): ContentSubmission! @requireAuth
-    deleteUserContentSubmissions(userId: String!): ContentSubmissionDeletion! @requireAuth
+    deleteUserContentSubmissions(synckey: String!): ContentSubmissionDeletion! @requireAuth
   }
 `;

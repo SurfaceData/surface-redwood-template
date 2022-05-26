@@ -52,7 +52,7 @@ export const linkBlog = async ({ input }) => {
     saver.savePost(synckey, post);
     return await db.contentSubmission.create({
       data: {
-        userId: input.id,
+        synckey: synckey,
         entryId: post.id,
         title: post.title,
         snippet: post.excerpt,

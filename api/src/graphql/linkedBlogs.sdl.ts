@@ -4,11 +4,13 @@ export const schema = gql`
     userId: String!
     synckey: String!
     language: String!
+    syncDone: Boolean!
+    syncSkipped: Boolean!
   }
 
   type Query {
     linkedBlogs: [LinkedBlog!]! @requireAuth
-    linkedBlog(id: Int!): LinkedBlog @requireAuth
+    linkedBlog(userId: String!): LinkedBlog @requireAuth
   }
 
   input CreateLinkedBlogInput {
@@ -23,8 +25,14 @@ export const schema = gql`
     language: String
   }
 
+  input CreateSyncedBlogInput {
+    syncDone: Boolean!
+    syncSkipped: Boolean!
+  }
+
   type Mutation {
     createLinkedBlog(input: CreateLinkedBlogInput!): LinkedBlog! @requireAuth
+    createSyncedBlog(userId: String!, input: CreateSyncedBlogInput!): LinkedBlog! @requireAuth
     updateLinkedBlog(id: Int!, input: UpdateLinkedBlogInput!): LinkedBlog!
       @requireAuth
     deleteLinkedBlog(id: Int!): LinkedBlog! @requireAuth

@@ -11,7 +11,7 @@ import {
 import { useMutation } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 
-import { QUERY as ContentSubmissionsQuery } from 'src/components/ContentSubmissionsCell'
+import { QUERY as FindLinkedBlogQuery } from 'src/components/LinkedBlogCell'
 
 const LINK = gql`
   mutation LinkBlog($input: LinkBlogInput!) {
@@ -32,11 +32,10 @@ const LinkBlogForm = () => {
     },
     refetchQueries: [
       {
-        query: ContentSubmissionsQuery,
+        query: FindLinkedBlogQuery,
         variables: { userId: currentUser.sub },
       },
     ],
-
   })
 
   const onSubmit = (input) => {

@@ -10,7 +10,7 @@ generator client {
 
 model ContentSubmission {
   id             Int @id @default(autoincrement())
-  userId         String
+  synckey        String
   entryId        String
   title          String
   snippet        String
@@ -22,4 +22,6 @@ model LinkedBlog {
   userId         String @unique
   synckey        String
   language       String
+  syncDone       Boolean @default(false)
+  syncSkipped    Boolean @default(false)
 }

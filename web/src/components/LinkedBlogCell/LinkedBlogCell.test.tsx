@@ -1,6 +1,6 @@
 import { render, screen } from '@redwoodjs/testing/web'
-import { Loading, Empty, Failure, Success } from './SyncLogsCell'
-import { standard } from './SyncLogsCell.mock'
+import { Loading, Empty, Failure, Success } from './LinkedBlogCell'
+import { standard } from './LinkedBlogCell.mock'
 
 // Generated boilerplate tests do not account for all circumstances
 // and can fail without adjustments, e.g. Float and DateTime types.
@@ -8,7 +8,7 @@ import { standard } from './SyncLogsCell.mock'
 //        https://redwoodjs.com/docs/testing#testing-cells
 // https://redwoodjs.com/docs/testing#jest-expect-type-considerations
 
-describe('SyncLogsCell', () => {
+describe('LinkedBlogCell', () => {
   it('renders Loading successfully', () => {
     expect(() => {
       render(<Loading />)
@@ -35,7 +35,7 @@ describe('SyncLogsCell', () => {
 
   it('renders Success successfully', async () => {
     expect(() => {
-      render(<Success syncLogs={standard().syncLogs} />)
+      render(<Success linkedBlog={standard().linkedBlog} />)
     }).not.toThrow()
   })
 })
