@@ -7,12 +7,13 @@ services:
       dockerfile: ./web/Dockerfile
     container_name: sdc-web
     expose:
-			- "8910"
+      - "8910"
     networks:
-			- hosting
+      - hosting
     environment:
       - LETSENCRYPT_HOST=collector.surface-coop.com
       - VIRTUAL_HOST=collector.surface-coop.com
+      - VIRTUAL_PATH=/
       - VIRTUAL_PORT=8910
 
   sdc-api:
@@ -21,7 +22,7 @@ services:
       dockerfile: ./api/Dockerfile
     container_name: sdc-api
     networks:
-			- hosting
+     - hosting
     expose:
       - "8911"
     environment:

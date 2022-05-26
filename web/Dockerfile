@@ -3,21 +3,19 @@ FROM node:14-alpine as builder
 WORKDIR /app
 
 COPY web web
+COPY .env .
 COPY .nvmrc .
 COPY graphql.config.js .
 COPY package.json .
 COPY redwood.toml .
 COPY yarn.lock .
 
-RUN yarn install --frozen-lockfile
+RUN yarn install
 RUN yarn rw build web
 RUN rm -rf ./web/src
 
-FROM nginx as runner
-
-COPY --from=builder /app/web/dist /usr/share/nginx/html
-COPY web/nginx.conf /etc/nginx/conf.d/default.conf
-
-RUN ls -lA /usr/share/nginx/html
+WORKDIR /app/web
 
 EXPOSE 8910
+
+ENTRYPOINT [ "yarn", "rw", "serve", "web", "--port", "8910"]
