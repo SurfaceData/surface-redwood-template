@@ -10,6 +10,10 @@ import { db } from 'src/lib/db';
 import { logger } from 'src/lib/logger';
 
 export const handler = createGraphQLHandler({
+  cors: {
+    origin: '*',
+    credentials: true,
+  },
   getCurrentUser,
   loggerConfig: { logger, options: {} },
   directives,

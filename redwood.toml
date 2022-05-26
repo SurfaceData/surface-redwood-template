@@ -6,9 +6,9 @@
 # https://redwoodjs.com/docs/app-configuration-redwood-toml
 
 [web]
-  title = "Redwood App"
+  title = "Surface Data Collector"
   port = 8910
-  apiUrl = "/api"
+  apiUrl = "https://collector.surface-coop.com/api"
   includeEnvironmentVariables = [] # any ENV vars that should be available to the web side, see https://redwoodjs.com/docs/environment-variables#web
 [api]
   port = 8911
