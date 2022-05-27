@@ -33,7 +33,7 @@ const LinkBlogForm = () => {
     refetchQueries: [
       {
         query: FindLinkedBlogQuery,
-        variables: { userId: currentUser.sub },
+        variables: { userId: currentUser?.sub },
       },
     ],
   })

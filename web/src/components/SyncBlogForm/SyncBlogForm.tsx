@@ -31,12 +31,11 @@ const SyncBlogForm = ({ synckey, language }) => {
     refetchQueries: [
       {
         query: FindLinkedBlogQuery,
-        variables: { userId: currentUser.sub },
+        variables: { userId: currentUser?.sub || '' },
       },
     ],
   })
   const onSubmit = (input) => {
-    console.log(input);
     syncBlog({
       variables: {
         userId: currentUser.sub,
