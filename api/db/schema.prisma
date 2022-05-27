@@ -24,4 +24,5 @@ model LinkedBlog {
   language       String
   syncDone       Boolean @default(false)
   syncSkipped    Boolean @default(false)
+  licensePool    String @default("")
 }

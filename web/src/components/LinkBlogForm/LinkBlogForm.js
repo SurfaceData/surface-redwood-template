@@ -4,6 +4,7 @@ import {
   Form,
   FormError,
   Label,
+  RadioField,
   TextField,
   Submit,
   useForm,
@@ -87,6 +88,18 @@ const LinkBlogForm = () => {
           className="block w-full p-1 border roudned text-xs"
           validation={{ required: true }}
         />
+
+        <Label name="licensePool" className="text-sm text-gray-600 uppercase">
+          Creative Commons Non Commercial
+        </Label>
+        <RadioField name="licensePool" value="cc-nc" />
+
+        <br />
+
+        <Label name="licensePool" className="text-sm text-gray-600 uppercase">
+          Creative Commons Public Domain
+        </Label>
+        <RadioField name="licensePool" value="cc-0" />
 
         <Submit
           className="block mt-4 bg-blue-500 text-white text-xs font-semibold uppercase tracking-wide rounded px-3 py-2 disabled:opacity-50"

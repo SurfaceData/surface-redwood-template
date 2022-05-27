@@ -6,6 +6,7 @@ export const schema = gql`
     language: String!
     syncDone: Boolean!
     syncSkipped: Boolean!
+    licensePool: String!
   }
 
   type Query {
@@ -17,6 +18,7 @@ export const schema = gql`
     userId: String!
     synckey: String!
     language: String!
+    licensePool: String!
   }
 
   input UpdateLinkedBlogInput {
