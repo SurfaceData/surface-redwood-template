@@ -5,16 +5,15 @@ import {
   PutObjectCommand,
 } from '@aws-sdk/client-s3'
 
+import { s3client } from 'src/lib/aws'
 import type { GhostPost, GhostSaver } from 'src/lib/savers/ghostSaver'
 
 export class AWSGhostSaver implements GhostSaver {
   client: S3Client
   bucket: string
 
-  constructor(region: string, bucket: string) {
-    this.client = new S3Client({
-      region: region,
-    })
+  constructor(bucket: string) {
+    this.client = s3client;
     this.bucket = bucket
   }
 
