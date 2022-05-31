@@ -31,6 +31,14 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
       statusCode: 400,
     }
   }
+  if (event.httpMethod == "HEAD") {
+    return {
+      statusCode: 200,
+      headers: {
+          ETag: '1234',
+      },
+    }
+  }
   const dataset = event.queryStringParameters.dataset
   const synckey = event.queryStringParameters.synckey
 

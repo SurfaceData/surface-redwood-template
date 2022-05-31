@@ -1,4 +1,4 @@
-version: "3.5"
+version: "3.7"
 
 services:
   scd-web:
@@ -11,6 +11,7 @@ services:
     networks:
       - hosting
     environment:
+      - API_URLhttps://collector.surface-coop.com/api
       - LETSENCRYPT_HOST=collector.surface-coop.com
       - VIRTUAL_HOST=collector.surface-coop.com
       - VIRTUAL_PATH=/
@@ -22,10 +23,13 @@ services:
       dockerfile: ./api/Dockerfile
     container_name: sdc-api
     networks:
-     - hosting
+      - hosting
     expose:
       - "8911"
+    volumes:
+      - $HOME/.aws/credentials:/root/.aws/credentials:ro
     environment:
+      - AWS_PROFILE=sdc-collector-app
       - LETSENCRYPT_HOST=collector.surface-coop.com
       - VIRTUAL_HOST=collector.surface-coop.com
       - VIRTUAL_PATH=/api
