@@ -1,6 +1,7 @@
 import { Link, routes } from '@redwoodjs/router';
 import { ImBlog, ImGithub, ImTwitter } from 'react-icons/im';
 import { FaDiscord } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next'
 import { Container, Header, Content, Footer as BaseFooter } from 'rsuite';
 import styled from 'styled-components';
 
@@ -39,6 +40,7 @@ const SocialIcon = styled.a`
 
 
 const StandardLayout = ({ children }) => {
+  const { t } = useTranslation()
   return (
     <Container className="flex-col h-screen justify-between">
       <Header>
@@ -53,22 +55,22 @@ const StandardLayout = ({ children }) => {
             rel="license"
             href="http://creativecommons.org/licenses/by-nc/4.0/">
             <img
-              alt="Creative Commons License"
+              alt={t('StandardLayout.Footer.licenseAlt')}
               height={31}
               width={88}
               src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
           </a>
           <br />
-          This work is licensed under a {' '}
+          {t('StandardLayout.Footer.work')}
           <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
-            Creative Commons Attribution-NonCommercial 4.0 International License
+            {t('StandardLayout.Footer.license')}
           </a>.
         </License>
 
         <div>
           <a target="_blank" rel="noreferrer" href="https://zebrasunite.coop/">
             <img
-              alt="Zebra's Unite Member"
+              alt={t('StandardLayout.Footer.zebraAlt')}
               height={45}
               width={90}
               src="/svg/ZebrasCoOp-Member-RGB-FullColor.svg" />

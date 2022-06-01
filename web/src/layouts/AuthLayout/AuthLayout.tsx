@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { Link, routes } from '@redwoodjs/router';
 import { Container, FlexboxGrid, Header, Navbar, Content, Footer } from 'rsuite';
 
@@ -10,12 +11,13 @@ const RedwoodLink = React.forwardRef((props) => {
 })
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
+  const { t } = useTranslation()
   return (
     <Container className="flex flex-col h-screen justify-between">
       <Header>
         <Navbar>
           <Navbar.Brand as={RedwoodLink} to={routes.home()}>
-            Surface Data Collector
+            {t('Navigation.brand')}
           </Navbar.Brand>
         </Navbar>
       </Header>

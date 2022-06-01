@@ -1,9 +1,11 @@
+import { useTranslation } from 'react-i18next'
 import { Form, TextField, Label, PasswordField, Submit } from '@redwoodjs/forms'
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { Panel } from 'rsuite'
 
 const SignupPage = () => {
+  const { t } = useTranslation()
   const { client } = useAuth()
   const [error, setError] = React.useState(null)
 
@@ -14,7 +16,6 @@ const SignupPage = () => {
         email: data.email,
         password: data.password,
       })
-      console.log(`response: ${response}`)
       if (response?.error?.message) {
         setError(response.error.message)
       } else {
@@ -32,7 +33,7 @@ const SignupPage = () => {
           name="email"
           className="block text-xs font-semibold text-gray-500"
         >
-          Email
+          {t('SigninPage.email')}
         </Label>
         <TextField
           name="email"
@@ -44,15 +45,15 @@ const SignupPage = () => {
           name="password"
           className="block text-xs font-semibold text-gray-500"
         >
-          Password
+          {t('SigninPage.password')}
         </Label>
         <PasswordField name="password" placeholder="password" />
         <Submit className="block mt-4 bg-blue-500 text-white text-xs font-semibold rounded px-2 py-2">
-          Sign Up
+          {t('SigninPage.signUp')}
         </Submit>
       </Form>
       <div>
-        Already registered? <Link to={routes.signin()}>Login</Link>
+        {t('SignupPage.registered')} <Link to={routes.signin()}>{t('SignupPage.login')}</Link>
       </div>
     </Panel>
   )

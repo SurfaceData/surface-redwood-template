@@ -1,8 +1,12 @@
-export default () => (
-  <main>
-    <style
-      dangerouslySetInnerHTML={{
-        __html: `
+import { useTranslation } from 'react-i18next'
+
+export default () => {
+  const { t } = useTranslation()
+  return (
+    <main>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
               html, body {
                 margin: 0;
               }
@@ -33,13 +37,14 @@ export default () => (
                 color: #2D3748;
               }
             `,
-      }}
-    />
+        }}
+      />
 
-    <section>
-      <h1>
-        <span>404 Page Not Found</span>
-      </h1>
-    </section>
-  </main>
-)
+      <section>
+        <h1>
+          <span>{t('NotFoundPage.message')}</span>
+        </h1>
+      </section>
+    </main>
+  )
+}
