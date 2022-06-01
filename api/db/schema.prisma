@@ -1,28 +1,9 @@
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+    url      = env("DATABASE_URL")
 }
 
 generator client {
   provider      = "prisma-client-js"
-  binaryTargets = "native"
-}
-
-model ContentSubmission {
-  id             Int @id @default(autoincrement())
-  synckey        String
-  entryId        String
-  title          String
-  snippet        String
-  createdAt      DateTime @default(now())
-}
-
-model LinkedBlog {
-  id             Int @id @default(autoincrement())
-  userId         String @unique
-  synckey        String
-  language       String
-  syncDone       Boolean @default(false)
-  syncSkipped    Boolean @default(false)
-  licensePool    String @default("")
+    binaryTargets = "native"
 }
