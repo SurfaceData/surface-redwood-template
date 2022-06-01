@@ -31,7 +31,7 @@ const Navigation = () => {
   return (
     <Navbar className="p-4">
       <Navbar.Brand as={RedwoodLink} to={routes.home()}>
-        Surface Data Collector
+        Surface Redwood Template 
       </Navbar.Brand>
       <Nav pullRight>
         <UserItem />
