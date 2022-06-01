@@ -2,6 +2,7 @@ import type { FindLinkedBlogQuery } from 'types/graphql'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 
+import RegisterBlogForm from 'src/components/RegisterBlogForm'
 import LinkBlogForm from 'src/components/LinkBlogForm'
 import SyncBlogForm from 'src/components/SyncBlogForm'
 import ContentSubmissionsCell from 'src/components/ContentSubmissionsCell'
@@ -28,7 +29,7 @@ const DELETE = gql`
 
 export const Loading = () => <div>Loading...</div>
 
-export const Empty = () => <LinkBlogForm />
+export const Empty = () => <RegisterBlogForm />
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div style={{ color: 'red' }}>Error: {error.message}</div>
