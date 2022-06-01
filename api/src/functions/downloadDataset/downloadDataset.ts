@@ -25,8 +25,8 @@ import { logger } from 'src/lib/logger'
  */
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   if (!event.queryStringParameters ||
-      !event.queryStringParameters.synckey ||
-      !event.queryStringParameters.dataset) {
+    !event.queryStringParameters.synckey ||
+    !event.queryStringParameters.dataset) {
     return {
       statusCode: 400,
     }
@@ -35,7 +35,7 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
     return {
       statusCode: 200,
       headers: {
-          ETag: '1234',
+        ETag: '1234',
       },
     }
   }
