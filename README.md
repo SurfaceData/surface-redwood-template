@@ -37,6 +37,39 @@ docker compose build
 docker compose up -d
 ```
 
+## What's Included
+
+In this template project we include several common structures needed by most of
+our projects:
+
+*  Authentication flows and Supbase integration
+*  Two common layouts for standard pages and authentication flows
+*  A couple common pages and components
+*  Internationalization setup
+
+### Internationalization
+
+We use [React i18next](https://react.i18next.com/) to extract messages and
+inject them into the build site.  To do the extraction, run 
+
+```
+yarn extract-translations
+```
+
+and any new strings will be extracted.
+
+By default we use three namespaces:
+
+1.  `translation`: The default namespace for all messages.
+1.  `auth`: Messages related to user authentication.
+1.  `layouts`: Messages for layout templates
+
+If you add more namespaces you have to update `web/src/i18n.js` to include
+those namespaces.
+
+If you add more languages, you also have to update `web/src/i18n.js` with those
+locales.
+
 ## Quick Links
 
 -  [Redwood Docs](https://redwoodjs.com/docs/introduction) provide details on
