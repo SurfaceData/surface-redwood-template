@@ -1,7 +1,7 @@
 import { Link, routes } from '@redwoodjs/router';
 import { ImBlog, ImGithub, ImTwitter } from 'react-icons/im';
 import { FaDiscord } from 'react-icons/fa';
-import { useTranslation, Trans } from 'react-i18next'
+import {  Trans } from 'react-i18next'
 import { Container, Header, Content, Footer as BaseFooter } from 'rsuite';
 import styled from 'styled-components';
 
