@@ -3,8 +3,12 @@ import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
 // Import locale files here.
-import fr from './locales/fr.json'
-import en from './locales/en.json'
+import en_auth from './locales/en/auth.json'
+import en_layouts from './locales/en/layouts.json'
+import en_translations from './locales/en/translation.json'
+import fr_auth from './locales/fr/auth.json'
+import fr_layouts from './locales/fr/layouts.json'
+import fr_translations from './locales/fr/translation.json'
 
 // This is a simple i18n configuration with English and French translations.
 // You can find the translations in web/src/locales/{language}.json
@@ -43,10 +47,14 @@ i18n
     fallbackLng: 'en',
     resources: {
       en: {
-        translation: en,
+        auth: en_auth,
+        layouts: en_layouts,
+        translation: en_translations,
       },
       fr: {
-        translation: fr,
+        auth: fr_auth,
+        layouts: fr_layouts,
+        translation: fr_translations,
       },
     },
   })

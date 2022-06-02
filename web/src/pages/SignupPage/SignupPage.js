@@ -1,11 +1,10 @@
-import { useTranslation } from 'react-i18next'
+import { Trans } from 'react-i18next'
 import { Form, TextField, Label, PasswordField, Submit } from '@redwoodjs/forms'
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { Panel } from 'rsuite'
 
 const SignupPage = () => {
-  const { t } = useTranslation()
   const { client } = useAuth()
   const [error, setError] = React.useState(null)
 
@@ -33,7 +32,7 @@ const SignupPage = () => {
           name="email"
           className="block text-xs font-semibold text-gray-500"
         >
-          {t('SigninPage.email')}
+          <Trans i18nKey="auth.email">Email</Trans>
         </Label>
         <TextField
           name="email"
@@ -45,7 +44,7 @@ const SignupPage = () => {
           name="password"
           className="block text-xs font-semibold text-gray-500"
         >
-          {t('SigninPage.password')}
+          <Trans i18nKey="auth.password">Password</Trans>
         </Label>
         <PasswordField name="password" placeholder="password" />
         <Submit className="block mt-4 bg-blue-500 text-white text-xs font-semibold rounded px-2 py-2">
@@ -53,7 +52,9 @@ const SignupPage = () => {
         </Submit>
       </Form>
       <div>
-        {t('SignupPage.registered')} <Link to={routes.signin()}>{t('SignupPage.login')}</Link>
+        <Trans i18nKey="auth.alreadyRegistered">Already Registered? {' '}
+          <Link to={routes.signin()}>Login</Link>
+        </Trans>
       </div>
     </Panel>
   )

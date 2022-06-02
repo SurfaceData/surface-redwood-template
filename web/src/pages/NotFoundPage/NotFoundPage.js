@@ -1,7 +1,6 @@
-import { useTranslation } from 'react-i18next'
+import { Trans } from 'react-i18next'
 
 export default () => {
-  const { t } = useTranslation()
   return (
     <main>
       <style
@@ -42,7 +41,9 @@ export default () => {
 
       <section>
         <h1>
-          <span>{t('NotFoundPage.message')}</span>
+          <span>
+            <Trans i18nKey="notfoundpageMessage">404 Page Not Found</Trans>
+          </span>
         </h1>
       </section>
     </main>

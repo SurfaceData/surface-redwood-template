@@ -1,3 +1,4 @@
+import { Trans } from 'react-i18next'
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
@@ -8,11 +9,11 @@ const HomePage = () => {
     <>
       {isAuthenticated ? (
         <div>
-          Authenticated View
+          <Trans i18nKey="homeAuthenticated">Authenticated View</Trans>
         </div>
       ) : (
         <div>
-          Unauthenticated View
+          <Trans i18nKey="homeUnauthenticated">Unauthenticated View</Trans>
         </div>
       )}
     </>

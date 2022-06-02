@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next'
+import { Trans } from 'react-i18next'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
 import { Navbar, Nav, Dropdown } from 'rsuite'
@@ -8,7 +8,6 @@ const RedwoodLink = React.forwardRef((props) => {
 })
 
 const UserItem = () => {
-  const { t } = useTranslation()
   const { isAuthenticated, logOut } = useAuth()
   if (isAuthenticated) {
     return (
@@ -18,23 +17,22 @@ const UserItem = () => {
           navigate(routes.home())
         }}
       >
-        {t('Navigation.signout')}
+        <Trans i18nKey="auth.signOut">Sign Out</Trans>
       </Nav.Item>
     )
   }
   return (
     <Nav.Item as={RedwoodLink} to={routes.signin()}>
-      {t('Navigation.signin')}
+      <Trans i18nKey="auth.signIn">Sign In</Trans>
     </Nav.Item>
   )
 }
 
 const Navigation = () => {
-  const { t } = useTranslation()
   return (
     <Navbar className="p-4">
       <Navbar.Brand as={RedwoodLink} to={routes.home()}>
-        {t('Navigation.brand')}
+        <Trans i18nKey="layout.brand">Surface Redwood Template</Trans>
       </Navbar.Brand>
       <Nav pullRight>
         <UserItem />

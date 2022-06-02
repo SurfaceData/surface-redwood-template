@@ -1,3 +1,5 @@
+import { Trans } from 'react-i18next'
+
 // This page will be rendered when an error makes it all the way to the top of the
 // application without being handled by a Javascript catch statement or React error
 // boundary.
@@ -55,7 +57,9 @@ export default RedwoodDevFatalErrorPage ||
 
       <section>
         <h1>
-          <span>Something went wrong</span>
+          <span>
+            <Trans i18nKey="fatalErrorPage">Something went wrong</Trans>
+          </span>
         </h1>
       </section>
     </main>

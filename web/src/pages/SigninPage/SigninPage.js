@@ -1,11 +1,10 @@
-import { useTranslation } from 'react-i18next'
+import { Trans } from 'react-i18next'
 import { Form, Label, TextField, PasswordField, Submit } from '@redwoodjs/forms'
 import { useAuth } from '@redwoodjs/auth'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { Panel } from 'rsuite'
 
 const SigninPage = () => {
-  const { t } = useTranslation()
   const { logIn } = useAuth()
   const [error, setError] = React.useState(null)
 
@@ -34,7 +33,7 @@ const SigninPage = () => {
           name="email"
           className="block text-xs font-semibold text-gray-500"
         >
-          {t('SigninPage.email')}
+          <Trans i18nKey="auth.email">Email</Trans>
         </Label>
         <TextField
           name="email"
@@ -46,16 +45,18 @@ const SigninPage = () => {
           name="password"
           className="block text-xs font-semibold text-gray-500"
         >
-          {t('SigninPage.password')}
+          <Trans i18nKey="auth.password">Password</Trans>
         </Label>
         <PasswordField name="password" placeholder="password" />
 
         <Submit className="block mt-4 bg-blue-500 text-white text-xs font-semibold rounded px-2 py-2">
-          {t('Navigation.signin')}
+          <Trans i18nKey="auth.signIn">Sign In</Trans>
         </Submit>
       </Form>
       <div>
-        {t('SigninPage.newUser')}<Link to={routes.signup()}>{t('SigninPage.signUp')}</Link>
+        <Trans i18nKey="auth.newUser">New User? {' '}
+          <Link to={routes.signup()}>Sign Up</Link>
+        </Trans>
       </div>
     </Panel>
   )

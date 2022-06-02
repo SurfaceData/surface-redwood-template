@@ -1,7 +1,7 @@
 import { Link, routes } from '@redwoodjs/router';
 import { ImBlog, ImGithub, ImTwitter } from 'react-icons/im';
 import { FaDiscord } from 'react-icons/fa';
-import { useTranslation } from 'react-i18next'
+import { useTranslation, Trans } from 'react-i18next'
 import { Container, Header, Content, Footer as BaseFooter } from 'rsuite';
 import styled from 'styled-components';
 
@@ -40,7 +40,6 @@ const SocialIcon = styled.a`
 
 
 const StandardLayout = ({ children }) => {
-  const { t } = useTranslation()
   return (
     <Container className="flex-col h-screen justify-between">
       <Header>
@@ -55,22 +54,24 @@ const StandardLayout = ({ children }) => {
             rel="license"
             href="http://creativecommons.org/licenses/by-nc/4.0/">
             <img
-              alt={t('StandardLayout.Footer.licenseAlt')}
+              alt={<Trans i18nKey="layouts.footerLicenseAlt">Creative Commons License</Trans>}
               height={31}
               width={88}
               src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
           </a>
           <br />
-          {t('StandardLayout.Footer.work')}
-          <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
-            {t('StandardLayout.Footer.license')}
-          </a>.
+          <Trans i18nKey="layouts.footerLicense">
+            This work is licensed under a {' '} 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+              Creative Commons Attribution-NonCommercial 4.0 International License
+            </a>.
+          </Trans>
         </License>
 
         <div>
           <a target="_blank" rel="noreferrer" href="https://zebrasunite.coop/">
             <img
-              alt={t('StandardLayout.Footer.zebraAlt')}
+              alt={<Trans i18nkey="layouts.footerZebraAlt">Zebra's Unite Member</Trans>}
               height={45}
               width={90}
               src="/svg/ZebrasCoOp-Member-RGB-FullColor.svg" />
