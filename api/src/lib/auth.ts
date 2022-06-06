@@ -40,11 +40,11 @@ export const getCurrentUser = async (
     return null
   }
 
-  const { role } = await db.userRoles.findUnique({
+  const result = await db.userRoles.findUnique({
     where: { id: decoded.sub },
   })
-  if (role) {
-    return { ...decoded, roles: [role] }
+  if (result && result.role) {
+    return { ...decoded, roles: [result.role] }
   }
 
   return { ...decoded }
