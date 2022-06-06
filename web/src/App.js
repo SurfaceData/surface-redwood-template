@@ -11,9 +11,9 @@ import './index.css'
 import './i18n'
 
 const supabaseClient = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_KEY
-  )
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
+)
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>

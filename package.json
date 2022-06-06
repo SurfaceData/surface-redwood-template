@@ -22,12 +22,14 @@
     "seed": "yarn rw exec seed"
   },
   "scripts": {
-    "extract-translations": "i18next --fail-on-warnings"
+    "extract-translations": "i18next --fail-on-warnings",
+    "setup-admin": "yarn rw exec setup_admin"
   },
   "packageManager": "yarn@3.2.0",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.87.0",
     "@aws-sdk/s3-request-presigner": "^3.100.0",
+    "command-line-args": "^5.2.1",
     "generate-api-key": "^1.0.0",
     "i18next-parser": "^6.4.0",
     "react-icons": "^4.3.1",
