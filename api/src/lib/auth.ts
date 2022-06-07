@@ -35,7 +35,6 @@ export const getCurrentUser = async (
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   { event, context }
 ) => {
-  console.log(decoded)
   if (!decoded) {
     return null
   }
