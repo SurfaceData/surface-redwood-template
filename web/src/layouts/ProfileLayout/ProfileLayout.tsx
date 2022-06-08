@@ -13,9 +13,10 @@ import {
   Sidebar,
   Sidenav,
 } from 'rsuite'
-import PeoplesIcon from '@rsuite/icons/Peoples'
 import ArrowLeftIcon from '@rsuite/icons/ArrowLeft'
 import ArrowRightIcon from '@rsuite/icons/ArrowRight'
+import SettingIcon from '@rsuite/icons/Setting'
+import UserInfoIcon from '@rsuite/icons/UserInfo';
 import styled from 'styled-components'
 
 import Navigation from 'src/components/Navigation'
@@ -51,7 +52,7 @@ const SocialIcon = styled.a`
   width: 36px;
 `
 
-type AdminLayoutProps = {
+type ProfileLayoutProps = {
   children?: React.ReactNode
 }
 
@@ -73,7 +74,7 @@ const NavToggle = ({ expand, onChange }) => {
   )
 }
 
-const AdminLayout = ({ children }: AdminLayoutProps) => {
+const ProfileLayout = ({ children }: ProfileLayoutProps) => {
   const [expand, setExpand] = useState(true)
   return (
     <Container className="flex-col h-screen justify-between">
@@ -91,11 +92,20 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
               <Nav>
                 <Nav.Item
                   as={RedwoodLink}
-                  to={routes.adminManageUsers()}
-                  icon={<PeoplesIcon />}
+                  to={routes.profileInfo()}
+                  icon={<UserInfoIcon />}
                 >
-                  <Trans i18nKey="layouts.adminManageUsers">
-                    Manage Users
+                  <Trans i18nkey="layouts.accountInfo">
+                    Info
+                  </Trans>
+                </Nav.Item>
+                <Nav.Item
+                  as={RedwoodLink}
+                  to={routes.profileAccountSettings()}
+                  icon={<SettingIcon />}
+                >
+                  <Trans i18nkey="layouts.accountSettings">
+                    Account Settings
                   </Trans>
                 </Nav.Item>
               </Nav>
@@ -173,4 +183,4 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   )
 }
 
-export default AdminLayout
+export default ProfileLayout
