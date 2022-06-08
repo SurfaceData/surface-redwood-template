@@ -36,7 +36,7 @@ const ActionCell = ({ rowData, dataKey, onClick, ...props }) => {
       >
         {rowData.status === 'EDIT'
           ? t('save', { ns: 'translation' })
-          : t('edit', { ns: 'translation' })}
+        : t('edit', { ns: 'translation' })}
       </Button>
     </Table.Cell>
   )
@@ -121,26 +121,19 @@ export const Success = ({ users }: CellSuccessProps<UsersQuery>) => {
     <Table data={userList}>
       <Table.Column width={300}>
         <Table.HeaderCell>
-          <Trans i18nKey="translation.id">Id</Trans>
-        </Table.HeaderCell>
-        <Table.Cell dataKey="id" />
-      </Table.Column>
-
-      <Table.Column width={300}>
-        <Table.HeaderCell>
           <Trans i18nKey="translation.email">Email</Trans>
         </Table.HeaderCell>
         <Table.Cell dataKey="email" />
       </Table.Column>
 
-      <Table.Column width={200}>
+      <Table.Column width={100}>
         <Table.HeaderCell>
           <Trans i18nKey="translation.role">Role</Trans>
         </Table.HeaderCell>
         <RoleCell dataKey="role" onChange={handleChange} />
       </Table.Column>
 
-      <Table.Column flexGrow={1}>
+      <Table.Column>
         <Table.HeaderCell>
           <Trans i18nKey="translation.action">Action</Trans>
         </Table.HeaderCell>

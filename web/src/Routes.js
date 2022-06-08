@@ -1,5 +1,6 @@
 import { Private, Router, Route, Set } from '@redwoodjs/router'
 
+import AdminLayout from 'src/layouts/AdminLayout'
 import AuthLayout from 'src/layouts/AuthLayout'
 import StandardLayout from 'src/layouts/StandardLayout'
 
@@ -19,7 +20,7 @@ const Routes = () => {
         </Set>
       </Private>
       <Private unauthenticated="home" roles="admin">
-        <Set wrap={StandardLayout}>
+        <Set wrap={AdminLayout}>
           <Route path="/admin/manage-users" page={AdminManageUsersPage} name="adminManageUsers" />
         </Set>
       </Private>
