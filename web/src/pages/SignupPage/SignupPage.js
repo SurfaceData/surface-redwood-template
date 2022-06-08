@@ -32,7 +32,7 @@ const SignupPage = () => {
           name="email"
           className="block text-xs font-semibold text-gray-500"
         >
-          <Trans i18nKey="auth.email">Email</Trans>
+          <Trans i18nKey="translation.email">Email</Trans>
         </Label>
         <TextField
           name="email"
@@ -44,16 +44,16 @@ const SignupPage = () => {
           name="password"
           className="block text-xs font-semibold text-gray-500"
         >
-          <Trans i18nKey="auth.password">Password</Trans>
+          <Trans i18nKey="translation.password">Password</Trans>
         </Label>
         <PasswordField name="password" placeholder="password" />
         <Submit className="block mt-4 bg-blue-500 text-white text-xs font-semibold rounded px-2 py-2">
-          {t('SigninPage.signUp')}
+          {t('auth.signUp')}
         </Submit>
       </Form>
       <div>
-        <Trans i18nKey="auth.alreadyRegistered">Already Registered? {' '}
-          <Link to={routes.signin()}>Login</Link>
+        <Trans i18nKey="auth.alreadyRegistered">
+          Already Registered? <Link to={routes.signin()}>Login</Link>
         </Trans>
       </div>
     </Panel>

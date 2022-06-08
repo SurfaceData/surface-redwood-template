@@ -33,7 +33,7 @@ const SigninPage = () => {
           name="email"
           className="block text-xs font-semibold text-gray-500"
         >
-          <Trans i18nKey="auth.email">Email</Trans>
+          <Trans i18nKey="translation.email">Email</Trans>
         </Label>
         <TextField
           name="email"
@@ -45,7 +45,7 @@ const SigninPage = () => {
           name="password"
           className="block text-xs font-semibold text-gray-500"
         >
-          <Trans i18nKey="auth.password">Password</Trans>
+          <Trans i18nKey="translation.password">Password</Trans>
         </Label>
         <PasswordField name="password" placeholder="password" />
 
@@ -54,8 +54,8 @@ const SigninPage = () => {
         </Submit>
       </Form>
       <div>
-        <Trans i18nKey="auth.newUser">New User? {' '}
-          <Link to={routes.signup()}>Sign Up</Link>
+        <Trans i18nKey="auth.newUser">
+          New User? <Link to={routes.signup()}>Sign Up</Link>
         </Trans>
       </div>
     </Panel>

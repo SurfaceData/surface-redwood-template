@@ -7,5 +7,5 @@ module.exports = {
   locales: ['fr', 'en'],
   namespaceSeparator: '.',
   output: 'web/src/locales/$LOCALE/$NAMESPACE.json',
-  input: ['web/src/**/*.js'],
+  input: ['web/src/**/*.js', 'web/src/**/*.ts', 'web/src/**/*.tsx'],
 }
