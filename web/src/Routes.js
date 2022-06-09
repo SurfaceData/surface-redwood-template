@@ -4,6 +4,7 @@ import AdminLayout from 'src/layouts/AdminLayout'
 import AuthLayout from 'src/layouts/AuthLayout'
 import ProfileLayout from 'src/layouts/ProfileLayout'
 import StandardLayout from 'src/layouts/StandardLayout'
+import StewardLayout from 'src/layouts/StewardLayout'
 
 const Routes = () => {
   return (
@@ -16,6 +17,11 @@ const Routes = () => {
         <Set wrap={ProfileLayout}>
           <Route path="/profile/info" page={ProfileInfoPage} name="profileInfo" />
           <Route path="/profile/account-settings" page={ProfileAccountSettingsPage} name="profileAccountSettings" />
+        </Set>
+      </Private>
+      <Private unauthenticated="home" roles={['admin', 'steward']}>
+        <Set wrap={StewardLayout}>
+          <Route path="/steward/review" page={StewardReviewPage} name="stewardReview" />
         </Set>
       </Private>
       <Private unauthenticated="home" roles="admin">
