@@ -1,43 +1,17 @@
 import { Link, routes } from '@redwoodjs/router'
+import SettingIcon from '@rsuite/icons/Setting'
+import UserInfoIcon from '@rsuite/icons/UserInfo'
 import { useState } from 'react'
 import { Trans } from 'react-i18next'
-import {
-  Container,
-  Content,
-  Header,
-  Nav,
-  Navbar,
-  Sidebar,
-  Sidenav,
-} from 'rsuite'
-import ArrowLeftIcon from '@rsuite/icons/ArrowLeft'
-import ArrowRightIcon from '@rsuite/icons/ArrowRight'
-import SettingIcon from '@rsuite/icons/Setting'
-import UserInfoIcon from '@rsuite/icons/UserInfo';
+import { Container, Content, Header, Nav, Sidebar, Sidenav } from 'rsuite'
 
 import Navigation from 'src/components/Navigation'
+import NavToggle from 'src/components/NavToggle'
+import RedwoodLink from 'src/components/RedwoodLink'
 import SurfaceFooter from 'src/components/SurfaceFooter'
 
 type ProfileLayoutProps = {
   children?: React.ReactNode
-}
-
-const RedwoodLink = React.forwardRef((props) => {
-  return <Link {...props} />
-})
-
-const NavToggle = ({ expand, onChange }) => {
-  return (
-    <Navbar className="border-t-2" appearance="subtle">
-      <Navbar.Body>
-        <Nav pullRight>
-          <Nav.Item onClick={onChange}>
-            {expand ? <ArrowLeftIcon /> : <ArrowRightIcon />}
-          </Nav.Item>
-        </Nav>
-      </Navbar.Body>
-    </Navbar>
-  )
 }
 
 const ProfileLayout = ({ children }: ProfileLayoutProps) => {
@@ -61,9 +35,7 @@ const ProfileLayout = ({ children }: ProfileLayoutProps) => {
                   to={routes.profileInfo()}
                   icon={<UserInfoIcon />}
                 >
-                  <Trans i18nkey="layouts.accountInfo">
-                    Info
-                  </Trans>
+                  <Trans i18nkey="layouts.accountInfo">Info</Trans>
                 </Nav.Item>
                 <Nav.Item
                   as={RedwoodLink}

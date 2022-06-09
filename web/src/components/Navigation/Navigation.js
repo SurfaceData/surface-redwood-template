@@ -5,6 +5,8 @@ import { useAuth } from '@redwoodjs/auth'
 import { Navbar, Nav, Dropdown } from 'rsuite'
 import styled from 'styled-components'
 
+import RedwoodLink from 'src/components/RedwoodLink'
+
 const StyledProfile = styled.img`
   border-radius: 50%;
 `
@@ -13,10 +15,6 @@ const ProfileButton = styled.button`
   background-color: transparent;
   border-radius: 50%;
 `
-
-const RedwoodLink = React.forwardRef((props) => {
-  return <Link {...props} />
-})
 
 function getGravatarURL(email) {
   const address = String(email).trim().toLowerCase()

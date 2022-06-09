@@ -2,13 +2,11 @@ import { Trans } from 'react-i18next'
 import { Link, routes } from '@redwoodjs/router';
 import { Container, FlexboxGrid, Header, Navbar, Content, Footer } from 'rsuite';
 
+import RedwoodLink from 'src/components/RedwoodLink'
+
 type AuthLayoutProps = {
   children?: React.ReactNode
 }
-
-const RedwoodLink = React.forwardRef((props) => {
-  return <Link {...props} />
-})
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (

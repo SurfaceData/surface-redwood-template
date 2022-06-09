@@ -1,4 +1,5 @@
-import { Link, routes } from '@redwoodjs/router'
+import { routes } from '@redwoodjs/router'
+import PeoplesIcon from '@rsuite/icons/Peoples'
 import { useState } from 'react'
 import { Trans } from 'react-i18next'
 import {
@@ -6,37 +7,17 @@ import {
   Content,
   Header,
   Nav,
-  Navbar,
   Sidebar,
   Sidenav,
 } from 'rsuite'
-import PeoplesIcon from '@rsuite/icons/Peoples'
-import ArrowLeftIcon from '@rsuite/icons/ArrowLeft'
-import ArrowRightIcon from '@rsuite/icons/ArrowRight'
 
 import Navigation from 'src/components/Navigation'
+import NavToggle from 'src/components/NavToggle'
+import RedwoodLink from 'src/components/RedwoodLink'
 import SurfaceFooter from 'src/components/SurfaceFooter'
 
 type AdminLayoutProps = {
   children?: React.ReactNode
-}
-
-const RedwoodLink = React.forwardRef((props) => {
-  return <Link {...props} />
-})
-
-const NavToggle = ({ expand, onChange }) => {
-  return (
-    <Navbar className="border-t-2" appearance="subtle">
-      <Navbar.Body>
-        <Nav pullRight>
-          <Nav.Item onClick={onChange}>
-            {expand ? <ArrowLeftIcon /> : <ArrowRightIcon />}
-          </Nav.Item>
-        </Nav>
-      </Navbar.Body>
-    </Navbar>
-  )
 }
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
