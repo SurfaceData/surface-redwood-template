@@ -1,35 +1,46 @@
 import { db } from 'api/src/lib/db'
+import { supabaseClient } from 'api/src/lib/supabase'
 
 export default async () => {
   try {
-    //
-    // Manually seed via `yarn rw prisma db seed`
-    // Seeds automatically with `yarn rw prisma migrate dev` and `yarn rw prisma migrate reset`
-    //
-    // Update "const data = []" to match your data model and seeding needs
-    //
-    const data = [
-      // To try this example data with the UserExample model in schema.prisma,
-      // uncomment the lines below and run 'yarn rw prisma migrate dev'
-      //
-      // { name: 'alice', email: 'alice@example.com' },
-      // { name: 'mark', email: 'mark@example.com' },
-      // { name: 'jackie', email: 'jackie@example.com' },
-      // { name: 'bob', email: 'bob@example.com' },
-    ]
-    console.log(
-      "\nUsing the default './scripts/seed.{js,ts}' template\nEdit the file to add seed data\n"
+    const { data: oldUsers, error } = await supabaseClient.auth.api.listUsers()
+    await Promise.all(
+      oldUsers.map(async (oldUser) => {
+        const result = await supabaseClient.auth.api.deleteUser(oldUser.id)
+      })
     )
 
-    // Note: if using PostgreSQL, using `createMany` to insert multiple records is much faster
-    // @see: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#createmany
-    Promise.all(
-      //
-      // Change to match your data model and seeding needs
-      //
+    const data = [
+      { email: 'client@example.com', password: 'client1234', role: 'general' },
+      {
+        email: 'steward.keith@example.com',
+        password: 'keith1234',
+        role: 'steward',
+      },
+      {
+        email: 'steward.carina@example.com',
+        password: 'carina1234',
+        role: 'steward',
+      },
+      {
+        email: 'admin.ten10@example.com',
+        password: 'ten101234',
+        role: 'admin',
+      },
+    ]
+    await Promise.all(
       data.map(async (data) => {
-        const record = await db.userExample.create({ data })
-        console.log(record)
+        const { data: user, error } = await supabaseClient.auth.api.createUser({
+          email: data.email,
+          password: data.password,
+          email_confirm: true,
+        })
+        const record = await db.userRoles.create({
+          data: {
+            id: user.id,
+            role: data.role,
+          },
+        })
       })
     )
   } catch (error) {
