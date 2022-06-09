@@ -2,6 +2,7 @@ import { Link, routes } from '@redwoodjs/router'
 import PeoplesIcon from '@rsuite/icons/Peoples'
 import { useState } from 'react'
 import { Trans } from 'react-i18next'
+import { useMediaQuery } from 'react-responsive'
 import { Container, Content, Header, Nav, Sidebar, Sidenav } from 'rsuite'
 
 import Navigation from 'src/components/Navigation'
@@ -14,7 +15,8 @@ type StewardLayoutProps = {
 }
 
 const StewardLayout = ({ children }: StewardLayoutProps) => {
-  const [expand, setExpand] = useState(true)
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 512px)' })
+  const [expand, setExpand] = useState(!isTabletOrMobile)
   return (
     <Container className="flex-col h-screen justify-between">
       <Header>

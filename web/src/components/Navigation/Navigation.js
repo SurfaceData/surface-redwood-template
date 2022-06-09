@@ -14,6 +14,7 @@ const StyledProfile = styled.img`
 const ProfileButton = styled.button`
   background-color: transparent;
   border-radius: 50%;
+  padding: 9px;
 `
 
 function getGravatarURL(email) {
@@ -24,7 +25,6 @@ function getGravatarURL(email) {
 
 const renderProfileIcon = (props, ref) => {
   const { user, ...rest } = props
-  console.log(user)
   const image = user.image ? user.image : getGravatarURL(user.email)
   return (
     <ProfileButton {...rest} ref={ref}>

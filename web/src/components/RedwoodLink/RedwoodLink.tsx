@@ -1,6 +1,6 @@
 import { Link } from '@redwoodjs/router'
 
-const RedwoodLink = React.forwardRef((props) => {
+const RedwoodLink = React.forwardRef((props, ref) => {
   return <Link {...props} />
 })
 

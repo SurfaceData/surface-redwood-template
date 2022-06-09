@@ -57,9 +57,10 @@ const RoleCell = ({ rowData, dataKey, onChange, ...props }) => {
     { value: 'general', label: roleLabels['general'] },
   ]
   return (
-    <Table.Cell {...props} className={editing ? 'table-content-editing' : ''}>
+    <Table.Cell {...props}>
       {editing ? (
         <SelectPicker
+          className="absolute top-1 p-0"
           data={roleTypes}
           onSelect={(value, item, event) => {
             onChange && onChange(rowData.id, dataKey, value)
@@ -126,7 +127,7 @@ export const Success = ({ users }: CellSuccessProps<UsersQuery>) => {
         <Table.Cell dataKey="email" />
       </Table.Column>
 
-      <Table.Column width={100}>
+      <Table.Column width={150}>
         <Table.HeaderCell>
           <Trans i18nKey="translation.role">Role</Trans>
         </Table.HeaderCell>

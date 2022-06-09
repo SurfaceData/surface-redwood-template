@@ -3,6 +3,7 @@ import SettingIcon from '@rsuite/icons/Setting'
 import UserInfoIcon from '@rsuite/icons/UserInfo'
 import { useState } from 'react'
 import { Trans } from 'react-i18next'
+import { useMediaQuery } from 'react-responsive'
 import { Container, Content, Header, Nav, Sidebar, Sidenav } from 'rsuite'
 
 import Navigation from 'src/components/Navigation'
@@ -15,7 +16,8 @@ type ProfileLayoutProps = {
 }
 
 const ProfileLayout = ({ children }: ProfileLayoutProps) => {
-  const [expand, setExpand] = useState(true)
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 512px)' })
+  const [expand, setExpand] = useState(!isTabletOrMobile)
   return (
     <Container className="flex-col h-screen justify-between">
       <Header>
