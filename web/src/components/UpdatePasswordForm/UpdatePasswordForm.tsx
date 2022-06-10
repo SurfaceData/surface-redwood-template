@@ -1,19 +1,17 @@
 import { useAuth } from '@redwoodjs/auth'
-import {
-  Form,
-  Label,
-  PasswordField,
-  Submit,
-  useForm,
-} from '@redwoodjs/forms'
+import { Form, useForm } from '@redwoodjs/forms'
 import { toast, Toaster } from '@redwoodjs/web/toast'
+import { Trans } from 'react-i18next'
+
+import SurfacePasswordField from 'src/components/SurfacePasswordField'
+import SurfaceSubmit from 'src/components/SurfaceSubmit'
 
 const UpdatePasswordForm = () => {
   const { client } = useAuth()
   const formMethods = useForm()
   const onSubmit = async (input) => {
     const { user, error } = client.auth.update({
-      password: input.newPassword
+      password: input.newPassword,
     })
     if (error) {
       toast.success('Thank you for linking your blog')
@@ -32,20 +30,13 @@ const UpdatePasswordForm = () => {
         onSubmit={onSubmit}
         formMethods={formMethods}
       >
-        <Label name="newPassword" className="block text-sm text-gray-600 uppercase">
-          New Password 
-        </Label>
-        <PasswordField
-          name="newPassword"
-          className="block w-full p-1 border roudned text-xs"
-          validation={{ required: true }}
-        />
+        <SurfacePasswordField name="password" validation={{ required: true }}>
+          <Trans i18nKey="translation.newPassword">New Password</Trans>
+        </SurfacePasswordField>
 
-        <Submit
-          className="block mt-4 bg-blue-500 text-white text-xs font-semibold uppercase tracking-wide rounded px-3 py-2 disabled:opacity-50"
-        >
-          Update Password
-        </Submit>
+        <SurfaceSubmit rounded outline>
+          <Trans i18nKey="auth.updatePassword">Update Password</Trans>
+        </SurfaceSubmit>
       </Form>
     </div>
   )

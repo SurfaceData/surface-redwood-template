@@ -1,8 +1,12 @@
 import { Trans } from 'react-i18next'
-import { Form, Label, TextField, PasswordField, Submit } from '@redwoodjs/forms'
+import { Form } from '@redwoodjs/forms'
 import { useAuth } from '@redwoodjs/auth'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { Panel } from 'rsuite'
+
+import SurfacePasswordField from 'src/components/SurfacePasswordField'
+import SurfaceTextField from 'src/components/SurfaceTextField'
+import SurfaceSubmit from 'src/components/SurfaceSubmit'
 
 const SigninPage = () => {
   const { logIn } = useAuth()
@@ -27,31 +31,19 @@ const SigninPage = () => {
 
   return (
     <Panel header={<h3>Login</h3>} bordered>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} className="p-4">
         {error && <p>{error}</p>}
-        <Label
-          name="email"
-          className="block text-xs font-semibold text-gray-500"
-        >
+        <SurfaceTextField name="email">
           <Trans i18nKey="translation.email">Email</Trans>
-        </Label>
-        <TextField
-          name="email"
-          className="block w-full p-1 border rounded text-sm"
-          placeholder="email"
-        />
+        </SurfaceTextField>
 
-        <Label
-          name="password"
-          className="block text-xs font-semibold text-gray-500"
-        >
+        <SurfacePasswordField name="password">
           <Trans i18nKey="translation.password">Password</Trans>
-        </Label>
-        <PasswordField name="password" placeholder="password" />
+        </SurfacePasswordField>
 
-        <Submit className="block mt-4 bg-blue-500 text-white text-xs font-semibold rounded px-2 py-2">
+        <SurfaceSubmit rounded>
           <Trans i18nKey="auth.signIn">Sign In</Trans>
-        </Submit>
+        </SurfaceSubmit>
       </Form>
       <div>
         <Trans i18nKey="auth.newUser">
