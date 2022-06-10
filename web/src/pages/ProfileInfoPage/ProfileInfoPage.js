@@ -35,7 +35,7 @@ const ProfileInfoPage = () => {
       <Form>
         <SurfaceTextField
           name="email"
-          readonly
+          readOnly
           value={currentUser?.email || ''}
         >
           <Trans i18nKey="translation.email">Email</Trans>
@@ -43,8 +43,8 @@ const ProfileInfoPage = () => {
 
         <SurfaceTextField
           name="role"
-          readonly
-          value={roleLabels[currentUser?.role || 'general']}
+          readOnly
+          value={roleLabels[currentUser?.roles[0] || 'general']}
         >
           <Trans i18nKey="translation.role">Role</Trans>
         </SurfaceTextField>
