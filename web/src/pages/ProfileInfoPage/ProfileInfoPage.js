@@ -1,20 +1,54 @@
+import { useAuth } from '@redwoodjs/auth'
+import { Form } from '@redwoodjs/forms'
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
+import { Trans, useTranslation } from 'react-i18next'
+
+import { SurfaceDetails, SurfaceSummary } from 'src/components/SurfaceDetails'
+import { SurfaceHeader2 } from 'src/components/SurfaceHeader2'
+import SurfaceTextField from 'src/components/SurfaceTextField'
 
 const ProfileInfoPage = () => {
+  const { currentUser } = useAuth()
+  const { t } = useTranslation('admin')
+  const roleLabels = {
+    admin: t('rolesAdmin'),
+    steward: t('rolesSteward'),
+    general: t('rolesGeneral'),
+  }
   return (
     <>
       <MetaTags title="ProfileInfo" description="ProfileInfo page" />
 
-      <h1>ProfileInfoPage</h1>
-      <p>
-        Find me in{' '}
-        <code>./web/src/pages/ProfileInfoPage/ProfileInfoPage.js</code>
-      </p>
-      <p>
-        My default route is named <code>profileInfo</code>, link to me with `
-        <Link to={routes.profileInfo()}>ProfileInfo</Link>`
-      </p>
+      <SurfaceHeader2>
+        <Trans i18key="translation.profile">Profile</Trans>
+      </SurfaceHeader2>
+
+      <SurfaceDetails>
+        <SurfaceSummary>How this helps</SurfaceSummary>
+        <div>
+          <Trans i18key="translation.profileSummary">
+            Contact information helps us stay in communication
+          </Trans>
+        </div>
+      </SurfaceDetails>
+      <Form>
+        <SurfaceTextField
+          name="email"
+          readonly
+          value={currentUser?.email || ''}
+        >
+          <Trans i18nKey="translation.email">Email</Trans>
+        </SurfaceTextField>
+
+        <SurfaceTextField
+          name="role"
+          readonly
+          value={roleLabels[currentUser?.role || 'general']}
+        >
+          <Trans i18nKey="translation.role">Role</Trans>
+        </SurfaceTextField>
+      </Form>
     </>
   )
 }

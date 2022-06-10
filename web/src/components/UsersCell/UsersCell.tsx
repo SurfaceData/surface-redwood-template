@@ -44,7 +44,6 @@ const ActionCell = ({ rowData, dataKey, onClick, ...props }) => {
 
 const RoleCell = ({ rowData, dataKey, onChange, ...props }) => {
   const { t } = useTranslation('admin')
-  const adminLabel = t('rolesAdmin')
   const editing = rowData.status === 'EDIT'
   const roleLabels = {
     admin: t('rolesAdmin'),

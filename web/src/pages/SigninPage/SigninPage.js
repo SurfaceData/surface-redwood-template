@@ -4,6 +4,7 @@ import { useAuth } from '@redwoodjs/auth'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { Panel } from 'rsuite'
 
+import { SurfaceHeader2 } from 'src/components/SurfaceHeader2'
 import SurfacePasswordField from 'src/components/SurfacePasswordField'
 import SurfaceTextField from 'src/components/SurfaceTextField'
 import SurfaceSubmit from 'src/components/SurfaceSubmit'
@@ -30,7 +31,14 @@ const SigninPage = () => {
   }
 
   return (
-    <Panel header={<h3>Login</h3>} bordered>
+    <Panel
+      bordered
+      header={
+        <SurfaceHeader2>
+          <Trans i18nkey="translation.login">Login</Trans>
+        </SurfaceHeader2>
+      }
+    >
       <Form onSubmit={onSubmit} className="p-4">
         {error && <p>{error}</p>}
         <SurfaceTextField name="email">
