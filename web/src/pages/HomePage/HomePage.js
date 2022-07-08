@@ -5,9 +5,6 @@ import { MetaTags } from '@redwoodjs/web'
 
 const HomePage = () => {
   const { isAuthenticated, currentUser, hasRole } = useAuth()
-  console.log(currentUser)
-  console.log(hasRole('admin'))
-
   return (
     <>
       {isAuthenticated ? (

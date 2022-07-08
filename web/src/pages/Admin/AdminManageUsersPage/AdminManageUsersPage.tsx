@@ -1,22 +1,27 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
-import { Trans } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 
-import { SurfaceDetails, SurfaceSummary } from 'src/components/SurfaceDetails'
-import { SurfaceHeader2 } from 'src/components/SurfaceHeader2'
+import { SurfaceDetails, SurfaceSummary } from 'src/components/ui/SurfaceDetails'
+import { SurfaceHeader2 } from 'src/components/ui/SurfaceHeader2'
 import UsersCell from 'src/components/UsersCell'
 
 const AdminManageUsersPage = () => {
+  const { t } = useTranslation('translation')
   return (
     <>
-      <MetaTags title="AdminManageUsers" description="AdminManageUsers page" />
+      <MetaTags title="AdminManageUsers" description={t('adminManageMeta')} />
 
       <SurfaceHeader2>
         <Trans i18key="layoutes.adminManageUsers">Manage Users</Trans>
       </SurfaceHeader2>
 
       <SurfaceDetails>
-        <SurfaceSummary>How to manage users</SurfaceSummary>
+        <SurfaceSummary>
+          <Trans i18key="translation.manageUsersHelp">
+            How to manage users
+          </Trans>
+        </SurfaceSummary>
         <div>
           <Trans i18key="translation.manageUsersSummary">
             Managing users means setting their permissions.  Choose the right

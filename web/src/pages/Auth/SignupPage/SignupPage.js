@@ -1,41 +1,40 @@
 import { Trans } from 'react-i18next'
 import { Form } from '@redwoodjs/forms'
 import { useAuth } from '@redwoodjs/auth'
-import { Link, navigate, routes } from '@redwoodjs/router'
+import { Link, routes, navigate } from '@redwoodjs/router'
 import { Panel } from 'rsuite'
 
-import { SurfaceHeader2 } from 'src/components/SurfaceHeader2'
-import SurfacePasswordField from 'src/components/SurfacePasswordField'
-import SurfaceTextField from 'src/components/SurfaceTextField'
-import SurfaceSubmit from 'src/components/SurfaceSubmit'
+import { SurfaceHeader2 } from 'src/components/ui/SurfaceHeader2'
+import SurfacePasswordField from 'src/components/ui/SurfacePasswordField'
+import SurfaceTextField from 'src/components/ui/SurfaceTextField'
+import SurfaceSubmit from 'src/components/ui/SurfaceSubmit'
 
-const SigninPage = () => {
-  const { logIn } = useAuth()
+const SignupPage = () => {
+  const { client } = useAuth()
   const [error, setError] = React.useState(null)
 
   const onSubmit = async (data) => {
     setError(null)
     try {
-      const response = await logIn({
+      const response = await client.auth.signUp({
         email: data.email,
         password: data.password,
       })
       if (response?.error?.message) {
         setError(response.error.message)
       } else {
-        navigate(routes.home())
+        navigate(routes.profileInfo())
       }
     } catch (error) {
       setError(error.message)
     }
   }
-
   return (
     <Panel
       bordered
       header={
         <SurfaceHeader2>
-          <Trans i18nkey="translation.login">Login</Trans>
+          <Trans i18nkey="translation.singUp">Sign Up</Trans>
         </SurfaceHeader2>
       }
     >
@@ -50,16 +49,16 @@ const SigninPage = () => {
         </SurfacePasswordField>
 
         <SurfaceSubmit rounded>
-          <Trans i18nKey="auth.signIn">Sign In</Trans>
+          <Trans i18nKey="auth.signUp">Sign Up</Trans>
         </SurfaceSubmit>
       </Form>
       <div>
-        <Trans i18nKey="auth.newUser">
-          New User? <Link to={routes.signup()}>Sign Up</Link>
+        <Trans i18nKey="auth.alreadyRegistered">
+          Already Registered? <Link to={routes.signin()}>Login</Link>
         </Trans>
       </div>
     </Panel>
   )
 }
 
-export default SigninPage
+export default SignupPage

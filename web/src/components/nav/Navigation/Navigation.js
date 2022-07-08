@@ -1,7 +1,7 @@
-import md5 from 'md5'
-import { Trans } from 'react-i18next'
-import { Link, navigate, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
+import { Link, navigate, routes } from '@redwoodjs/router'
+import md5 from 'md5'
+import { Trans, useTranslation } from 'react-i18next'
 import { Navbar, Nav, Dropdown } from 'rsuite'
 import styled from 'styled-components'
 
@@ -24,22 +24,29 @@ function getGravatarURL(email) {
 }
 
 const renderProfileIcon = (props, ref) => {
+  const { t } = useTranslation('layouts')
   const { user, ...rest } = props
   const image = user.image ? user.image : getGravatarURL(user.email)
   return (
     <ProfileButton {...rest} ref={ref}>
-      <StyledProfile alt="Your Profile" src={image} height="32" width="32" />
+      <StyledProfile
+        alt={t('yourProfile')}
+        src={image}
+        height="32"
+        width="32"
+      />
     </ProfileButton>
   )
 }
 
 const UserItem = () => {
+  const { t } = useTranslation('layouts')
   const { isAuthenticated, currentUser, hasRole, logOut } = useAuth()
   if (isAuthenticated) {
     return (
       <Dropdown
         placement="bottomEnd"
-        title="Account"
+        title={t('account')}
         renderToggle={renderProfileIcon}
         user={currentUser}
       >

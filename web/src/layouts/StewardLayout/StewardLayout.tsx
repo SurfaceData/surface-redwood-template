@@ -5,10 +5,10 @@ import { Trans } from 'react-i18next'
 import { useMediaQuery } from 'react-responsive'
 import { Container, Content, Header, Nav, Sidebar, Sidenav } from 'rsuite'
 
-import Navigation from 'src/components/Navigation'
-import NavToggle from 'src/components/NavToggle'
 import RedwoodLink from 'src/components/RedwoodLink'
-import SurfaceFooter from 'src/components/SurfaceFooter'
+import Navigation from 'src/components/nav/Navigation'
+import NavToggle from 'src/components/nav/NavToggle'
+import SurfaceFooter from 'src/components/ui/SurfaceFooter'
 
 type StewardLayoutProps = {
   children?: React.ReactNode

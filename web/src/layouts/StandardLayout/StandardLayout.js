@@ -1,7 +1,7 @@
 import { Container, Header, Content } from 'rsuite'
 
-import Navigation from 'src/components/Navigation'
-import SurfaceFooter from 'src/components/SurfaceFooter'
+import Navigation from 'src/components/nav/Navigation'
+import SurfaceFooter from 'src/components/ui/SurfaceFooter'
 
 const StandardLayout = ({ children }) => {
   return (

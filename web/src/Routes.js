@@ -10,23 +10,23 @@ const Routes = () => {
   return (
     <Router>
       <Set wrap={AuthLayout}>
-        <Route path="/signin" page={SigninPage} name="signin" />
-        <Route path="/signup" page={SignupPage} name="signup" />
+        <Route path="/signin" page={AuthSigninPage} name="signin" />
+        <Route path="/signup" page={AuthSignupPage} name="signup" />
       </Set>
       <Private unauthenticated="home">
         <Set wrap={ProfileLayout}>
-          <Route path="/profile/info" page={ProfileInfoPage} name="profileInfo" />
-          <Route path="/profile/account-settings" page={ProfileAccountSettingsPage} name="profileAccountSettings" />
+          <Route path="/profile/info" page={GeneralProfileInfoPage} name="profileInfo" />
+          <Route path="/profile/account-settings" page={GeneralProfileAccountSettingsPage} name="profileAccountSettings" />
         </Set>
       </Private>
       <Private unauthenticated="home" roles={['admin', 'steward']}>
         <Set wrap={StewardLayout}>
-          <Route path="/steward/review" page={StewardReviewPage} name="stewardReview" />
+          <Route path="/steward/review" page={StewardStewardReviewPage} name="stewardReview" />
         </Set>
       </Private>
       <Private unauthenticated="home" roles="admin">
         <Set wrap={AdminLayout}>
-          <Route path="/admin/manage-users" page={AdminManageUsersPage} name="adminManageUsers" />
+          <Route path="/admin/manage-users" page={AdminAdminManageUsersPage} name="adminManageUsers" />
         </Set>
       </Private>
       <Set wrap={StandardLayout}>
