@@ -10,13 +10,13 @@ import SurfaceTextField from 'src/components/ui/SurfaceTextField'
 import SurfaceSubmit from 'src/components/ui/SurfaceSubmit'
 
 const SignupPage = () => {
-  const { client } = useAuth()
+  const { client, signUp } = useAuth()
   const [error, setError] = React.useState(null)
 
   const onSubmit = async (data) => {
     setError(null)
     try {
-      const response = await client.auth.signUp({
+      const response = await signUp({
         email: data.email,
         password: data.password,
       })
