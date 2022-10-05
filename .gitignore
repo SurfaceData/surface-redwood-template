@@ -24,3 +24,7 @@ api/types/graphql.d.ts
 
 # Local file for data storage
 data/*
+
+
+# Deployment
+.serverless
