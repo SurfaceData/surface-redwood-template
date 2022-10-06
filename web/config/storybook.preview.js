@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { I18nextProvider } from 'react-i18next'
 import i18n from 'web/src/i18n'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import * as theme from 'config/chakra.config'
 
 /** @type { import("@storybook/csf").GlobalTypes } */
 export const globalTypes = {
@@ -11,8 +13,16 @@ export const globalTypes = {
     toolbar: {
       icon: 'globe',
       items: [
-        { value: 'en', right: '🇺🇸', title: 'English' },
-        { value: 'fr', right: '🇫🇷', title: 'Français' },
+        {
+          value: 'en',
+          right: '🇺🇸',
+          title: 'English',
+        },
+        {
+          value: 'fr',
+          right: '🇫🇷',
+          title: 'Français',
+        },
       ],
     },
   },
@@ -33,7 +43,6 @@ const withI18n = (StoryFn, context) => {
   React.useEffect(() => {
     i18n.changeLanguage(context.globals.locale)
   }, [context.globals.locale])
-
   return (
     <I18nextProvider i18n={i18n}>
       <StoryFn />
@@ -41,4 +50,14 @@ const withI18n = (StoryFn, context) => {
   )
 }
 
-export const decorators = [withI18n]
+const extendedTheme = extendTheme(theme)
+
+const withChakra = (StoryFn) => {
+  return (
+    <ChakraProvider theme={extendedTheme}>
+      <StoryFn />
+    </ChakraProvider>
+  )
+}
+
+export const decorators = [withI18n, withChakra]
