@@ -1,58 +1,60 @@
-import { Trans } from 'react-i18next'
-import { FaDiscord } from 'react-icons/fa';
-import { ImBlog, ImGithub, ImTwitter } from 'react-icons/im';
-import { Footer } from 'rsuite'
-import styled from 'styled-components'
-
-const StyledFooter = styled(Footer)`
-  align-items: center;
-  border-top: 1px solid #ccc;
-  display: flex;
-  font-size: 12px;
-  justify-content: space-between;
-  padding: 8px;
-`
-
-const License = styled.div`
-  width: 400px;
-`
-
-const SocialIconContainer = styled.div`
-  display: flex;
-  gap: 10px;
-`
-
-const SocialIcon = styled.a`
-  align-items: center;
-  border: 1px solid rgb(220, 222, 224);
-  border-radius: 50%;
-  color: rgb(118, 119, 122);
-  display: flex;
-  height: 36px;
-  justify-content: center;
-  opacity: 1;
-  text-decoration: none;
-  width: 36px;
-`
+import {
+  ButtonGroup,
+  Container,
+  IconButton,
+  Stack,
+  Text,
+} from '@chakra-ui/react'
+import { FaGithub, FaTwitter } from 'react-icons/fa'
+import { ImBlog } from 'react-icons/im'
 
 const SurfaceFooter = () => {
   return (
-    <StyledFooter>
-      <License>
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
-          <img
-            alt={
-              <Trans i18nKey="layouts.footerLicenseAlt">
-                Creative Commons License
-              </Trans>
-            }
-            height={31}
-            width={88}
-            src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"
-          />
-        </a>
-        <br />
-        <Trans i18nKey="layouts.footerLicense">
+    <Container as="footer" role="contentinfo" py={{ base: '12', md: '16' }}>
+      <Stack spacing={{ base: '4', md: '5' }}>
+        <Stack justify="space-between" direction="row" align="center">
+          <a
+            rel="license"
+            href="http://creativecommons.org/licenses/by-nc/4.0/"
+          >
+            <img
+              alt="Creative Commons License"
+              height={31}
+              width={88}
+              src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"
+            />
+          </a>
+
+          <ButtonGroup variant="outline">
+            <IconButton
+              as="a"
+              target="_"
+              isRound="true"
+              href="https://blog.surfacedata.org/"
+              aria-label="Blog"
+              icon={<ImBlog fontSize="1.25rem" />}
+            />
+            <IconButton
+              as="a"
+              target="_"
+              isRound="true"
+              colorScheme="blackAlpha"
+              href="https://github.com/SurfaceData/"
+              aria-label="GitHub"
+              icon={<FaGithub fontSize="1.25rem" />}
+            />
+            <IconButton
+              as="a"
+              target="_"
+              isRound="true"
+              colorScheme="twitter"
+              href="https://twitter.com/SurfaceData"
+              aria-label="Twitter"
+              icon={<FaTwitter fontSize="1.25rem" />}
+            />
+          </ButtonGroup>
+        </Stack>
+        <Text fontSize="xs" color="subtle" w="64">
           This work is licensed under a{' '}
           <a
             rel="license"
@@ -61,38 +63,9 @@ const SurfaceFooter = () => {
             Creative Commons Attribution-NonCommercial 4.0 International License
           </a>
           .
-        </Trans>
-      </License>
-
-      <div>
-        <a target="_blank" rel="noreferrer" href="https://zebrasunite.coop/">
-          <img
-            alt={
-              <Trans i18nkey="layouts.footerZebraAlt">
-                Zebra's Unite Member
-              </Trans>
-            }
-            height={45}
-            width={90}
-            src="/svg/ZebrasCoOp-Member-RGB-FullColor.svg"
-          />
-        </a>
-      </div>
-
-      <SocialIconContainer>
-        <SocialIcon target="_blank" href="https://blog.surfacedata.org/">
-          <ImBlog size={16} />
-        </SocialIcon>
-
-        <SocialIcon target="_blank" href="https://github.com/SurfaceData/">
-          <ImGithub size={16} />
-        </SocialIcon>
-
-        <SocialIcon target="_blank" href="https://twitter.com/SurfaceData">
-          <ImTwitter size={16} />
-        </SocialIcon>
-      </SocialIconContainer>
-    </StyledFooter>
+        </Text>
+      </Stack>
+    </Container>
   )
 }
 
