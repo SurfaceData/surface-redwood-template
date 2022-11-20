@@ -10,7 +10,12 @@ import { ImBlog } from 'react-icons/im'
 
 const SurfaceFooter = () => {
   return (
-    <Container as="footer" role="contentinfo" py={{ base: '12', md: '16' }}>
+    <Container
+      as="footer"
+      role="contentinfo"
+      py={{ base: '12', md: '16' }}
+      maxW="full"
+    >
       <Stack spacing={{ base: '4', md: '5' }}>
         <Stack justify="space-between" direction="row" align="center">
           <a
