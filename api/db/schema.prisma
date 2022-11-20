@@ -8,7 +8,11 @@ generator client {
   binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
-model UserRoles {
-  id    String @id
-  role  String
+model User {
+  id                  Int @id @default(autoincrement())
+  email               String  @unique
+  hashedPassword      String
+  salt                String
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
 }

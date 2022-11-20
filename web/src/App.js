@@ -1,5 +1,6 @@
 import { AuthProvider } from '@redwoodjs/auth'
-import { createClient } from '@supabase/supabase-js'
+
+
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 
@@ -9,6 +10,7 @@ import * as theme from 'config/chakra.config'
 import FatalErrorPage from 'src/pages/FatalErrorPage'
 import Routes from 'src/Routes'
 
+import './scaffold.css'
 import 'rsuite/dist/rsuite.min.css'
 import './index.css'
 import './i18n'
@@ -25,7 +27,7 @@ const App = () => (
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <ColorModeScript />
       <ChakraProvider theme={extendedTheme}>
-        <AuthProvider client={supabaseClient} type="supabase">
+        <AuthProvider type="dbAuth">
           <RedwoodApolloProvider>
             <Routes />
           </RedwoodApolloProvider>
