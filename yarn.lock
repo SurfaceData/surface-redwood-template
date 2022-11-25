@@ -3185,6 +3185,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@chakra-ui/icons@npm:^1.0.0":
+  version: 1.1.7
+  resolution: "@chakra-ui/icons@npm:1.1.7"
+  dependencies:
+    "@chakra-ui/icon": 2.0.5
+    "@types/react": ^17.0.15
+  peerDependencies:
+    "@chakra-ui/system": ">=1.0.0"
+    react: ">=16.8.6"
+  checksum: 68707c7512f8f5e39e7e8bfa3d2faa1be39733d6513732855ec5e48a058b05e3fbc2755f05f85f2f90e0e0579cc24abf20ac86b53aba14a405596eb06aca7e31
+  languageName: node
+  linkType: hard
+
 "@chakra-ui/image@npm:1.1.10":
   version: 1.1.10
   resolution: "@chakra-ui/image@npm:1.1.10"
@@ -3603,6 +3616,16 @@ __metadata:
     "@chakra-ui/utils": 1.10.4
     csstype: 3.0.9
   checksum: 95e0f651c15e99269ac00476a0f23dbc8d091aacaedb25b05e86abdab52b9e967f400b041e862afa0a46ffad71a184888eeba7354e4e81a9e600942f371a4400
+  languageName: node
+  linkType: hard
+
+"@chakra-ui/styled-system@npm:^2.3.5":
+  version: 2.3.5
+  resolution: "@chakra-ui/styled-system@npm:2.3.5"
+  dependencies:
+    csstype: ^3.0.11
+    lodash.mergewith: 4.6.2
+  checksum: 546f24d988c0a5a4dbfafe348c0ad84ab163be536430791763046e1608862ba1844feca6066aaf2f41a8320c9efffa6764d2604d8969b64d5757459e2d195ca1
   languageName: node
   linkType: hard
 
@@ -5539,6 +5562,15 @@ __metadata:
     mkdirp: ^1.0.4
     rimraf: ^3.0.2
   checksum: 3a1920e02fa05c1c06c63b7a9614f440403942ce849cc59a2b2aed3e29f2871c4009fdf17de29d84bea3c43f2c370fbcf78d8bcb051339939eaf7cdcb7fb7132
+  languageName: node
+  linkType: hard
+
+"@npmcli/package-json@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@npmcli/package-json@npm:2.0.0"
+  dependencies:
+    json-parse-even-better-errors: ^2.3.1
+  checksum: 67aa80bb75e2f8d328c5225caf31d63499b01dd8b094e739b84de442b5411ba1040374cea113ccbcd3f0dda8b872a243e74d937b584c9040e8af6a90d42a564e
   languageName: node
   linkType: hard
 
@@ -7840,6 +7872,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@surfacedata/sd-components@npm:^0.0.11":
+  version: 0.0.11
+  resolution: "@surfacedata/sd-components@npm:0.0.11"
+  dependencies:
+    "@chakra-ui/icons": ^1.0.0
+    "@chakra-ui/styled-system": ^2.3.5
+    "@npmcli/package-json": ^2.0.0
+    react-icons: ^4.6.0
+  peerDependencies:
+    "@chakra-ui/react": 1.8.9
+    react: ">=17.0.0"
+    react-dom: ">=17.8.0"
+  checksum: 9acdf0e69cbb09a84808ce74a1cd6d664328525ba4d019731df96b64f4e1baf9eacb89c103c0929568d6c23eae6536e9f73998f2fc0ed3a879911432c2ed7a4d
+  languageName: node
+  linkType: hard
+
 "@szmarczak/http-timer@npm:^1.1.2":
   version: 1.1.2
   resolution: "@szmarczak/http-timer@npm:1.1.2"
@@ -8598,6 +8646,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 2e7cf61b7319b6398c62a29922255ce335c98bfbb55bda7c3aa386f4c2693d894d26eba9f7111f3ae86be79491d471a2ee89bf54f0445177ff70d1c30ab39382
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^17.0.15":
+  version: 17.0.52
+  resolution: "@types/react@npm:17.0.52"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: df8662375c71eab90f9832bf388e210b337514ff0cfd260547c498b5a010a8bba980fa704b0e828070e83363c8d20a0a03e3e2fcd27d50649c3811b1279ea9ed
   languageName: node
   linkType: hard
 
@@ -13225,6 +13284,13 @@ __metadata:
   version: 3.0.9
   resolution: "csstype@npm:3.0.9"
   checksum: bca0719a6248445cbad0ba9a45911a0bdcf1ab3b08ae8ce1d7766f9d82d7ce3c5cbb1a542926d52958368c1db290baed50d6c9672a7e5fcca37eba37a28f33a3
+  languageName: node
+  linkType: hard
+
+"csstype@npm:^3.0.11":
+  version: 3.1.1
+  resolution: "csstype@npm:3.1.1"
+  checksum: 7c8b8c5923049d84132581c13bae6e1faf999746fe3998ba5f3819a8e1cdc7512ace87b7d0a4a69f0f4b8ba11daf835d4f1390af23e09fc4f0baad52c084753a
   languageName: node
   linkType: hard
 
@@ -24038,6 +24104,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-icons@npm:^4.6.0":
+  version: 4.6.0
+  resolution: "react-icons@npm:4.6.0"
+  peerDependencies:
+    react: "*"
+  checksum: 8918b18c7a956d8832cf2a508b023a8893bfb551fdbaa16aecb9b2eb2ad4c783af6abbcb4609106362d7ad9497b0c6143bb4e8426e2df598f2509cfcf87af4ac
+  languageName: node
+  linkType: hard
+
 "react-inspector@npm:^5.1.0":
   version: 5.1.1
   resolution: "react-inspector@npm:5.1.1"
@@ -28701,6 +28776,7 @@ __metadata:
     "@redwoodjs/router": ^3.4.0
     "@redwoodjs/web": ^3.4.0
     "@supabase/supabase-js": ^1.35.2
+    "@surfacedata/sd-components": ^0.0.11
     autoprefixer: ^10.4.7
     framer-motion: ^6
     i18n: ^0.15.0
