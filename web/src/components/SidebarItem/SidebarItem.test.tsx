@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import NavToggle from './NavToggle'
+import SidebarItem from './SidebarItem'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('NavToggle', () => {
+describe('SidebarItem', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<NavToggle />)
+      render(<SidebarItem />)
     }).not.toThrow()
   })
 })

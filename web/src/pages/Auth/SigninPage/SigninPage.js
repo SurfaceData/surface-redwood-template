@@ -1,13 +1,8 @@
-import { Trans } from 'react-i18next'
-import { Form } from '@redwoodjs/forms'
+import { Container, Flex } from '@chakra-ui/react'
 import { useAuth } from '@redwoodjs/auth'
+import { Form, TextField } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
-import { Panel } from 'rsuite'
-
-import { SurfaceHeader2 } from 'src/components/ui/SurfaceHeader2'
-import SurfacePasswordField from 'src/components/ui/SurfacePasswordField'
-import SurfaceTextField from 'src/components/ui/SurfaceTextField'
-import SurfaceSubmit from 'src/components/ui/SurfaceSubmit'
+import { Button, LabeledInput } from '@surfacedata/sd-components'
 
 const SigninPage = () => {
   const { logIn } = useAuth()
@@ -17,8 +12,7 @@ const SigninPage = () => {
     setError(null)
     try {
       const response = await logIn({
-        email: data.email,
-        password: data.password,
+        ...data,
       })
       if (response?.error?.message) {
         setError(response.error.message)
@@ -31,34 +25,26 @@ const SigninPage = () => {
   }
 
   return (
-    <Panel
-      bordered
-      header={
-        <SurfaceHeader2>
-          <Trans i18nkey="translation.login">Login</Trans>
-        </SurfaceHeader2>
-      }
-    >
+    <Container>
       <Form onSubmit={onSubmit} className="p-4">
         {error && <p>{error}</p>}
-        <SurfaceTextField name="email">
-          <Trans i18nKey="translation.email">Email</Trans>
-        </SurfaceTextField>
 
-        <SurfacePasswordField name="password">
-          <Trans i18nKey="translation.password">Password</Trans>
-        </SurfacePasswordField>
+        <Flex spacing="12px" direction="column" gap="4">
+          <LabeledInput name="username" label="Email" as={TextField} />
 
-        <SurfaceSubmit rounded>
-          <Trans i18nKey="auth.signIn">Sign In</Trans>
-        </SurfaceSubmit>
+          <LabeledInput name="password" label="Password" type="password" />
+
+          <Flex align="center" direction="column">
+            <Button width="12" variant="solid" type="submit">
+              Login
+            </Button>
+          </Flex>
+        </Flex>
       </Form>
-      <div>
-        <Trans i18nKey="auth.newUser">
-          New User? <Link to={routes.signup()}>Sign Up</Link>
-        </Trans>
-      </div>
-    </Panel>
+      <Container>
+        New User? <Link to={routes.signup()}>Sign Up</Link>
+      </Container>
+    </Container>
   )
 }
 

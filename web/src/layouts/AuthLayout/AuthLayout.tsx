@@ -1,8 +1,8 @@
-import { Trans } from 'react-i18next'
-import { Link, routes } from '@redwoodjs/router';
-import { Container, FlexboxGrid, Header, Navbar, Content, Footer } from 'rsuite';
+import { Box, Container, Flex, Image } from '@chakra-ui/react'
+import { Link, routes } from '@redwoodjs/router'
+import { Button, Navigation } from '@surfacedata/sd-components'
 
-import RedwoodLink from 'src/components/RedwoodLink'
+import SurfaceFooter from 'src/components/ui/SurfaceFooter'
 
 type AuthLayoutProps = {
   children?: React.ReactNode
@@ -10,25 +10,20 @@ type AuthLayoutProps = {
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
-    <Container className="flex flex-col h-screen justify-between">
-      <Header>
-        <Navbar>
-          <Navbar.Brand as={RedwoodLink} to={routes.home()}>
-            <Trans i18nKey="layouts.brand">Surface Redwood Template</Trans>
-          </Navbar.Brand>
-        </Navbar>
-      </Header>
-      <Content className="mb-auto h-10 p-4">
-        <FlexboxGrid justify="center">
-          <FlexboxGrid.Item colspan={12}>
-            {children}
-          </FlexboxGrid.Item>
-        </FlexboxGrid>
-      </Content>
-      <Footer>
-      </Footer>
-    </Container>
-  );
+    <Flex direction="column" flex="1" h="100vh">
+      <Navigation
+        logo={
+          <Link to={routes.home()}>
+            <Image src="/svg/surface-data.svg" />
+          </Link>
+        }
+      />
+      <Flex as="main" role="main" direction="row" flex="1" py="16">
+        <Container align="center">{children}</Container>
+      </Flex>
+      <SurfaceFooter />
+    </Flex>
+  )
 }
 
 export default AuthLayout

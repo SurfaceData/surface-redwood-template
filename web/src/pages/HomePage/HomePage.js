@@ -55,9 +55,9 @@ const HomePage = () => {
   }
   return (
     <>
-      {isAuthenticated ? (
+      {!isAuthenticated ? (
         <div>
-          <Trans i18nKey="homeAuthenticated">Authenticated View</Trans>
+          <Trans i18nKey="homeAuthenticated">Register</Trans>
         </div>
       ) : (
         <div>

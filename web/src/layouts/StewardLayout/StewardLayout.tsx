@@ -1,13 +1,10 @@
+import { Container, Flex } from '@chakra-ui/react'
 import { Link, routes } from '@redwoodjs/router'
-import PeoplesIcon from '@rsuite/icons/Peoples'
-import { useState } from 'react'
-import { Trans } from 'react-i18next'
-import { useMediaQuery } from 'react-responsive'
-import { Container, Content, Header, Nav, Sidebar, Sidenav } from 'rsuite'
+import { FaTasks } from 'react-icons/fa'
 
-import RedwoodLink from 'src/components/RedwoodLink'
-import Navigation from 'src/components/nav/Navigation'
-import NavToggle from 'src/components/nav/NavToggle'
+import NavBar from 'src/components/NavBar'
+import Sidebar from 'src/components/Sidebar'
+import SidebarItem from 'src/components/SidebarItem'
 import SurfaceFooter from 'src/components/ui/SurfaceFooter'
 
 type StewardLayoutProps = {
@@ -15,38 +12,26 @@ type StewardLayoutProps = {
 }
 
 const StewardLayout = ({ children }: StewardLayoutProps) => {
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 512px)' })
-  const [expand, setExpand] = useState(!isTabletOrMobile)
   return (
-    <Container className="flex-col h-screen justify-between">
-      <Header>
-        <Navigation />
-      </Header>
-      <Container>
-        <Sidebar
-          className="flex flex-col bg-slate-100"
-          collapsible
-          width={expand ? 260 : 56}
-        >
-          <Sidenav className="flex-1" expanded={expand} appearance="subtle">
-            <Sidenav.Body>
-              <Nav>
-                <Nav.Item
-                  as={RedwoodLink}
-                  to={routes.stewardReview()}
-                  icon={<PeoplesIcon />}
-                >
-                  <Trans i18nKey="layouts.stewardReview">Review</Trans>
-                </Nav.Item>
-              </Nav>
-            </Sidenav.Body>
-          </Sidenav>
-          <NavToggle expand={expand} onChange={() => setExpand(!expand)} />
+    <Flex direction="column" flex="1" h="100vh">
+      <NavBar />
+      <Flex as="main" role="main" direction="row" flex="1" pt="2">
+        <Sidebar>
+          <SidebarItem
+            icon={FaTasks}
+            label="Review"
+            as={Link}
+            to={routes.stewardReview()}
+          />
         </Sidebar>
-        <Content className="flex-1 mb-auto p-4">{children}</Content>
-      </Container>
-      <SurfaceFooter />
-    </Container>
+        <Flex direction="column" width="full">
+          <Container flex="1" maxW="full">
+            {children}
+          </Container>
+          <SurfaceFooter />
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }
 

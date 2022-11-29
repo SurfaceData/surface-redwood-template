@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import SignoutBtn from './SignoutBtn'
+import NavBar from './NavBar'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('SignoutBtn', () => {
+describe('NavBar', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<SignoutBtn />)
+      render(<NavBar />)
     }).not.toThrow()
   })
 })

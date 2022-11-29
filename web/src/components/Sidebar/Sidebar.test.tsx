@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import Navigation from './Navigation'
+import Sidebar from './Sidebar'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('Navigation', () => {
+describe('Sidebar', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<Navigation />)
+      render(<Sidebar />)
     }).not.toThrow()
   })
 })

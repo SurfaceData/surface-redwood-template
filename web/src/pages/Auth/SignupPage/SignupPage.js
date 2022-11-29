@@ -1,13 +1,8 @@
-import { Trans } from 'react-i18next'
-import { Form } from '@redwoodjs/forms'
+import { Container, Flex } from '@chakra-ui/react'
 import { useAuth } from '@redwoodjs/auth'
-import { Link, routes, navigate } from '@redwoodjs/router'
-import { Panel } from 'rsuite'
-
-import { SurfaceHeader2 } from 'src/components/ui/SurfaceHeader2'
-import SurfacePasswordField from 'src/components/ui/SurfacePasswordField'
-import SurfaceTextField from 'src/components/ui/SurfaceTextField'
-import SurfaceSubmit from 'src/components/ui/SurfaceSubmit'
+import { Form, TextField } from '@redwoodjs/forms'
+import { Link, navigate, routes } from '@redwoodjs/router'
+import { Button, LabeledInput } from '@surfacedata/sd-components'
 
 const SignupPage = () => {
   const { client, signUp } = useAuth()
@@ -17,47 +12,42 @@ const SignupPage = () => {
     setError(null)
     try {
       const response = await signUp({
-        email: data.email,
-        password: data.password,
+        ...data,
       })
       if (response?.error?.message) {
         setError(response.error.message)
-      } else {
-        navigate(routes.profileInfo())
+        return
       }
+      navigate(routes.home())
     } catch (error) {
       setError(error.message)
     }
   }
   return (
-    <Panel
-      bordered
-      header={
-        <SurfaceHeader2>
-          <Trans i18nkey="translation.singUp">Sign Up</Trans>
-        </SurfaceHeader2>
-      }
-    >
+    <Container>
       <Form onSubmit={onSubmit} className="p-4">
         {error && <p>{error}</p>}
-        <SurfaceTextField name="email">
-          <Trans i18nKey="translation.email">Email</Trans>
-        </SurfaceTextField>
+        <Flex spacing="12px" direction="column" gap="4">
+          <LabeledInput name="username" label="Email" as={TextField} />
 
-        <SurfacePasswordField name="password">
-          <Trans i18nKey="translation.password">Password</Trans>
-        </SurfacePasswordField>
+          <LabeledInput
+            name="password"
+            label="Password"
+            type="password"
+            as={TextField}
+          />
 
-        <SurfaceSubmit rounded>
-          <Trans i18nKey="auth.signUp">Sign Up</Trans>
-        </SurfaceSubmit>
+          <Flex align="center" direction="column">
+            <Button width="12" variant="solid" type="submit">
+              Register
+            </Button>
+          </Flex>
+        </Flex>
       </Form>
-      <div>
-        <Trans i18nKey="auth.alreadyRegistered">
-          Already Registered? <Link to={routes.signin()}>Login</Link>
-        </Trans>
-      </div>
-    </Panel>
+      <Container>
+        Already Registered? <Link to={routes.signin()}>Login</Link>
+      </Container>
+    </Container>
   )
 }
 
