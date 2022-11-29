@@ -1,6 +1,9 @@
+import { Container, Flex } from '@chakra-ui/react'
 import { useAuth } from '@redwoodjs/auth'
 import { Form, useForm } from '@redwoodjs/forms'
 import { toast, Toaster } from '@redwoodjs/web/toast'
+import { Button, LabeledInput } from '@surfacedata/sd-components'
+
 import { Trans, useTranslation } from 'react-i18next'
 
 import SurfacePasswordField from 'src/components/ui/SurfacePasswordField'
@@ -15,15 +18,15 @@ const UpdatePasswordForm = () => {
       password: input.newPassword,
     })
     if (error) {
-      toast.success(t('passwordUpdateError'))
+      toast.failure('Success')
     } else {
-      toast.success(t('passwordUpdateSuccess'))
+      toast.success('Failure')
       formMethods.reset()
     }
   }
 
   return (
-    <div>
+    <>
       <Toaster />
 
       <Form
@@ -31,15 +34,15 @@ const UpdatePasswordForm = () => {
         onSubmit={onSubmit}
         formMethods={formMethods}
       >
-        <SurfacePasswordField name="password" validation={{ required: true }}>
-          <Trans i18nKey="auth.newPassword">New Password</Trans>
-        </SurfacePasswordField>
+        <Flex spacing="12px" direction="column" gap="4">
+          <LabeledInput name="password" label="Password" type="password" />
 
-        <SurfaceSubmit rounded outline>
-          <Trans i18nKey="auth.updatePassword">Update Password</Trans>
-        </SurfaceSubmit>
+          <Button width="12" variant="solid" type="submit">
+            Update Password
+          </Button>
+        </Flex>
       </Form>
-    </div>
+    </>
   )
 }
 
