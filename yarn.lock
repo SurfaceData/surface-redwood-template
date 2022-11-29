@@ -9867,6 +9867,7 @@ __metadata:
   dependencies:
     "@redwoodjs/api": ^3.4.0
     "@redwoodjs/graphql-server": ^3.4.0
+    random-int: ^3.0.0
     serverless: ^3.22.0
   languageName: unknown
   linkType: soft
@@ -23871,6 +23872,13 @@ __metadata:
   version: 0.21.0
   resolution: "ramda@npm:0.21.0"
   checksum: a5d28ef8f09f7fd024b2a92477f5356e6323c26be29992c87139757e39b20f9006b6a4c69002b952b2ddb88d983823b26ed68020257660617e3a395b7ea2d6da
+  languageName: node
+  linkType: hard
+
+"random-int@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "random-int@npm:3.0.0"
+  checksum: 832d248b4c1fd84c6894112c17f895206ab8116a890839343437ce436550a4279e05c28966fcabaa8f7f981ddebdd2c047f125b4024de03ea6ad4bf3cf9a749d
   languageName: node
   linkType: hard
 

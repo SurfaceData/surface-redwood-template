@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "@redwoodjs/api": "^3.4.0",
-    "@redwoodjs/graphql-server": "^3.4.0"
+    "@redwoodjs/graphql-server": "^3.4.0",
+    "random-int": "^3.0.0"
   },
   "devDependencies": {
     "serverless": "^3.22.0"

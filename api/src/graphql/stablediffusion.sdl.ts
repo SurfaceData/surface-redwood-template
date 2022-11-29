@@ -13,7 +13,7 @@ export const schema = gql`
     batch_size: Int
     width: Int
     height: Int
-    seed: Int
+    seed: String
   }
 
   type Query {

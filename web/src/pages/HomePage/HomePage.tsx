@@ -46,7 +46,7 @@ const HomePage = () => {
           guidance_scale: gradience,
           steps,
           batch_size: batchSize,
-          seed: useRandom ? -1 : parseInt(seedEl.current.value),
+          seed: useRandom ? '-1' : seedEl.current.value,
         },
       },
     })
@@ -69,6 +69,7 @@ const HomePage = () => {
               <option value="ddim">DDIM</option>
               <option value="dpm">DPM</option>
               <option value="euler">Euler</option>
+              <option value="euler_a">Euler Ancestral</option>
               <option value="pndm">PNDM</option>
               <option value="lms">LMS</option>
             </LabeledSelect>

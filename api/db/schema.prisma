@@ -17,3 +17,9 @@ model User {
   resetToken          String?
   resetTokenExpiresAt DateTime?
 }
+
+model DiffusionQuery {
+  id        Int @id @default(autoincrement())
+  raw       Json
+  createdAt DateTime @default(now())
+}
