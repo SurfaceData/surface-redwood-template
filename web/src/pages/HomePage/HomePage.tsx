@@ -11,7 +11,6 @@ import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import { useRef, useState } from 'react'
-import { Trans } from 'react-i18next'
 
 const QUERY = gql`
   query StableDiffusion($input: GenerateImageInput!) {
@@ -36,7 +35,6 @@ const HomePage = () => {
   const [steps, setSteps] = useState(50)
   const [batchSize, setBatchSize] = useState(4)
   const [useRandom, setUseRandom] = useState(true)
-  console.log(useRandom)
 
   const onClick = () => {
     generateImage({
@@ -56,9 +54,7 @@ const HomePage = () => {
   return (
     <>
       {!isAuthenticated ? (
-        <div>
-          <Trans i18nKey="homeAuthenticated">Register</Trans>
-        </div>
+        <div>Register</div>
       ) : (
         <div>
           <Flex spacing="12px" direction="column" gap="4">
