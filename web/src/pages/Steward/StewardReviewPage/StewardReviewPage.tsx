@@ -1,12 +1,8 @@
 import { Heading } from '@chakra-ui/react'
 import { MetaTags } from '@redwoodjs/web'
+import { Details } from '@surfacedata/sd-components'
 
 import { Trans } from 'react-i18next'
-
-import {
-  SurfaceDetails,
-  SurfaceSummary,
-} from 'src/components/ui/SurfaceDetails'
 
 const StewardReviewPage = () => {
   return (
@@ -15,12 +11,9 @@ const StewardReviewPage = () => {
 
       <Heading>Steward Tasks</Heading>
 
-      <SurfaceDetails>
-        <SurfaceSummary>How Stewards Help</SurfaceSummary>
-        <div>
-          Stewards help look after the community and all associated datasets.
-        </div>
-      </SurfaceDetails>
+      <Details title="How Stewards Help">
+        Stewards help look after the community and all associated datasets.
+      </Details>
     </>
   )
 }

@@ -2,12 +2,7 @@ import { Flex, Heading } from '@chakra-ui/react'
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
-import { LabeledInput } from '@surfacedata/sd-components'
-
-import {
-  SurfaceDetails,
-  SurfaceSummary,
-} from 'src/components/ui/SurfaceDetails'
+import { Details, LabeledInput } from '@surfacedata/sd-components'
 
 const ProfileInfoPage = () => {
   const { currentUser } = useAuth()
@@ -24,10 +19,9 @@ const ProfileInfoPage = () => {
       <Flex spacing="12px" direction="column" gap="4">
         <Heading>Profile</Heading>
 
-        <SurfaceDetails>
-          <SurfaceSummary>How this helps</SurfaceSummary>
-          <div>Contact information helps us stay in communication</div>
-        </SurfaceDetails>
+        <Details title="How this helps">
+          Contact information helps us stay in communication
+        </Details>
 
         <LabeledInput label="Email" readOnly value={currentUser?.email || ''} />
         <LabeledInput label="Role" readOnly value={roleLabels[role]} />

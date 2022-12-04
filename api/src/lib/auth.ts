@@ -27,7 +27,7 @@ export const getCurrentUser = async (session: Decoded) => {
 
   return await db.user.findUnique({
     where: { id: session.id },
-    select: { id: true, email: true },
+    select: { id: true, email: true, role: true },
   })
 }
 
@@ -59,7 +59,7 @@ export const hasRole = (roles: AllowedRoles): boolean => {
     return false
   }
 
-  const currentUserRoles = context.currentUser?.roles
+  const currentUserRoles = context.currentUser?.role
 
   if (typeof roles === 'string') {
     if (typeof currentUserRoles === 'string') {

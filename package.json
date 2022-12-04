@@ -37,8 +37,6 @@
     "generate-api-key": "^1.0.0",
     "i18next-parser": "^6.4.0",
     "react-icons": "^4.3.1",
-    "react-responsive": "^9.0.0-beta.10",
-    "rsuite": "^5.11.0",
-    "styled-components": "^5.3.5"
+    "react-responsive": "^9.0.0-beta.10"
   }
 }

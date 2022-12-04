@@ -1,7 +1,7 @@
 import { db } from 'src/lib/db'
 
 export const users = async () => {
-  const users = await db.users.findMany({
+  const users = await db.user.findMany({
     select: {
       id: true,
       email: true,
