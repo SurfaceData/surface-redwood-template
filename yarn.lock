@@ -7829,9 +7829,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@surfacedata/sd-components@npm:^0.0.15":
-  version: 0.0.15
-  resolution: "@surfacedata/sd-components@npm:0.0.15"
+"@surfacedata/sd-components@npm:^0.0.16":
+  version: 0.0.16
+  resolution: "@surfacedata/sd-components@npm:0.0.16"
   dependencies:
     "@chakra-ui/icons": ^1.0.0
     "@chakra-ui/styled-system": ^2.3.5
@@ -7841,7 +7841,7 @@ __metadata:
     "@chakra-ui/react": 1.8.9
     react: ">=17.0.0"
     react-dom: ">=17.8.0"
-  checksum: 556c31c8db0e439c5ceaf2c438e8f5591f0d8f20112cd168415a9a5e3597a8c0d04caacea3cd8ebcecec122f2137e0d03cdcde5f45eb4656f8efad30c37e2360
+  checksum: 0de9d25a862ced050147b2d843b584a5b63e5836afddf3579411e5217e4f3d3ad695401639acedac2eb1b9dce5ab61b751810b99199ba544301040cb4509cbc9
   languageName: node
   linkType: hard
 
@@ -28535,7 +28535,7 @@ __metadata:
     "@redwoodjs/router": ^3.4.0
     "@redwoodjs/web": ^3.4.0
     "@supabase/supabase-js": ^1.35.2
-    "@surfacedata/sd-components": ^0.0.15
+    "@surfacedata/sd-components": ^0.0.16
     autoprefixer: ^10.4.7
     framer-motion: ^6
     i18n: ^0.15.0
