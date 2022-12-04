@@ -1,5 +1,3 @@
-import { Trans } from 'react-i18next'
-
 export default () => {
   return (
     <main>
@@ -41,9 +39,7 @@ export default () => {
 
       <section>
         <h1>
-          <span>
-            <Trans i18nKey="notfoundpageMessage">404 Page Not Found</Trans>
-          </span>
+          <span>404 Page Not Found</span>
         </h1>
       </section>
     </main>

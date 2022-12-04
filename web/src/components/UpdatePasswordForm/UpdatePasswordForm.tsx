@@ -4,13 +4,10 @@ import { Form, useForm } from '@redwoodjs/forms'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 import { Button, LabeledInput } from '@surfacedata/sd-components'
 
-import { Trans, useTranslation } from 'react-i18next'
-
 import SurfacePasswordField from 'src/components/ui/SurfacePasswordField'
 import SurfaceSubmit from 'src/components/ui/SurfaceSubmit'
 
 const UpdatePasswordForm = () => {
-  const { t } = useTranslation('auth')
   const { client } = useAuth()
   const formMethods = useForm()
   const onSubmit = async (input) => {

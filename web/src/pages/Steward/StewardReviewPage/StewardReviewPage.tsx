@@ -2,8 +2,6 @@ import { Heading } from '@chakra-ui/react'
 import { MetaTags } from '@redwoodjs/web'
 import { Details } from '@surfacedata/sd-components'
 
-import { Trans } from 'react-i18next'
-
 const StewardReviewPage = () => {
   return (
     <>
